@@ -79,109 +79,109 @@ Within the download you'll find the following directories and files:
 
 ```
 material-dashboard-angular
-â”œâ”€â”€ CHANGELOG.md
-â”œâ”€â”€ LICENSE.md
-â”œâ”€â”€ README.md
-â”œâ”€â”€ angular-cli.json
-â”œâ”€â”€ documentation
-â”œâ”€â”€ e2e
-â”œâ”€â”€ karma.conf.js
-â”œâ”€â”€ package-lock.json
-â”œâ”€â”€ package.json
-â”œâ”€â”€ protractor.conf.js
-â”œâ”€â”€ src
-â”‚Â Â  â”œâ”€â”€ app
-â”‚Â Â  â”‚Â Â  â”œâ”€â”€ app.component.css
-â”‚Â Â  â”‚Â Â  â”œâ”€â”€ app.component.html
-â”‚Â Â  â”‚Â Â  â”œâ”€â”€ app.component.spec.ts
-â”‚Â Â  â”‚Â Â  â”œâ”€â”€ app.component.ts
-â”‚Â Â  â”‚Â Â  â”œâ”€â”€ app.module.ts
-â”‚Â Â  â”‚Â Â  â”œâ”€â”€ app.routing.ts
-â”‚Â Â  â”‚Â Â  â”œâ”€â”€ components
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ components.module.ts
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ footer
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ footer.component.css
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ footer.component.html
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ footer.component.spec.ts
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”‚Â Â  â””â”€â”€ footer.component.ts
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ navbar
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ navbar.component.css
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ navbar.component.html
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ navbar.component.spec.ts
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”‚Â Â  â””â”€â”€ navbar.component.ts
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â””â”€â”€ sidebar
-â”‚Â Â  â”‚Â Â  â”‚Â Â      â”œâ”€â”€ sidebar.component.css
-â”‚Â Â  â”‚Â Â  â”‚Â Â      â”œâ”€â”€ sidebar.component.html
-â”‚Â Â  â”‚Â Â  â”‚Â Â      â”œâ”€â”€ sidebar.component.spec.ts
-â”‚Â Â  â”‚Â Â  â”‚Â Â      â””â”€â”€ sidebar.component.ts
-â”‚Â Â  â”‚Â Â  â”œâ”€â”€ dashboard
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ dashboard.component.css
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ dashboard.component.html
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ dashboard.component.spec.ts
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â””â”€â”€ dashboard.component.ts
-â”‚Â Â  â”‚Â Â  â”œâ”€â”€ icons
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ icons.component.css
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ icons.component.html
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ icons.component.spec.ts
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â””â”€â”€ icons.component.ts
-â”‚Â Â  â”‚Â Â  â”œâ”€â”€ layouts
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â””â”€â”€ admin-layout
-â”‚Â Â  â”‚Â Â  â”‚Â Â      â”œâ”€â”€ admin-layout.component.html
-â”‚Â Â  â”‚Â Â  â”‚Â Â      â”œâ”€â”€ admin-layout.component.scss
-â”‚Â Â  â”‚Â Â  â”‚Â Â      â”œâ”€â”€ admin-layout.component.spec.ts
-â”‚Â Â  â”‚Â Â  â”‚Â Â      â”œâ”€â”€ admin-layout.component.ts
-â”‚Â Â  â”‚Â Â  â”‚Â Â      â”œâ”€â”€ admin-layout.module.ts
-â”‚Â Â  â”‚Â Â  â”‚Â Â      â””â”€â”€ admin-layout.routing.ts
-â”‚Â Â  â”‚Â Â  â”œâ”€â”€ maps
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ maps.component.css
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ maps.component.html
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ maps.component.spec.ts
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â””â”€â”€ maps.component.ts
-â”‚Â Â  â”‚Â Â  â”œâ”€â”€ notifications
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ notifications.component.css
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ notifications.component.html
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ notifications.component.spec.ts
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â””â”€â”€ notifications.component.ts
-â”‚Â Â  â”‚Â Â  â”œâ”€â”€ table-list
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ table-list.component.css
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ table-list.component.html
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ table-list.component.spec.ts
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â””â”€â”€ table-list.component.ts
-â”‚Â Â  â”‚Â Â  â”œâ”€â”€ typography
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ typography.component.css
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ typography.component.html
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ typography.component.spec.ts
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â””â”€â”€ typography.component.ts
-â”‚Â Â  â”‚Â Â  â”œâ”€â”€ upgrade
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ upgrade.component.css
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ upgrade.component.html
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â”œâ”€â”€ upgrade.component.spec.ts
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â””â”€â”€ upgrade.component.ts
-â”‚Â Â  â”‚Â Â  â””â”€â”€ user-profile
-â”‚Â Â  â”‚Â Â      â”œâ”€â”€ user-profile.component.css
-â”‚Â Â  â”‚Â Â      â”œâ”€â”€ user-profile.component.html
-â”‚Â Â  â”‚Â Â      â”œâ”€â”€ user-profile.component.spec.ts
-â”‚Â Â  â”‚Â Â      â””â”€â”€ user-profile.component.ts
-â”‚Â Â  â”œâ”€â”€ assets
-â”‚Â Â  â”‚Â Â  â”œâ”€â”€ css
-â”‚Â Â  â”‚Â Â  â”‚Â Â  â””â”€â”€ demo.css
-â”‚Â Â  â”‚Â Â  â”œâ”€â”€ img
-â”‚Â Â  â”‚Â Â  â””â”€â”€ scss
-â”‚Â Â  â”‚Â Â      â”œâ”€â”€ core
-â”‚Â Â  â”‚Â Â      â””â”€â”€ material-dashboard.scss
-â”‚Â Â  â”œâ”€â”€ environments
-â”‚Â Â  â”œâ”€â”€ favicon.ico
-â”‚Â Â  â”œâ”€â”€ index.html
-â”‚Â Â  â”œâ”€â”€ main.ts
-â”‚Â Â  â”œâ”€â”€ polyfills.ts
-â”‚Â Â  â”œâ”€â”€ styles.css
-â”‚Â Â  â”œâ”€â”€ test.ts
-â”‚Â Â  â”œâ”€â”€ tsconfig.app.json
-â”‚Â Â  â”œâ”€â”€ tsconfig.spec.json
-â”‚Â Â  â””â”€â”€ typings.d.ts
-â”œâ”€â”€ tsconfig.json
-â”œâ”€â”€ tslint.json
-â””â”€â”€ typings
++-- CHANGELOG.md
++-- LICENSE.md
++-- README.md
++-- angular-cli.json
++-- documentation
++-- e2e
++-- karma.conf.js
++-- package-lock.json
++-- package.json
++-- protractor.conf.js
++-- src
+¦   +-- app
+¦   ¦   +-- app.component.css
+¦   ¦   +-- app.component.html
+¦   ¦   +-- app.component.spec.ts
+¦   ¦   +-- app.component.ts
+¦   ¦   +-- app.module.ts
+¦   ¦   +-- app.routing.ts
+¦   ¦   +-- components
+¦   ¦   ¦   +-- components.module.ts
+¦   ¦   ¦   +-- footer
+¦   ¦   ¦   ¦   +-- footer.component.css
+¦   ¦   ¦   ¦   +-- footer.component.html
+¦   ¦   ¦   ¦   +-- footer.component.spec.ts
+¦   ¦   ¦   ¦   +-- footer.component.ts
+¦   ¦   ¦   +-- navbar
+¦   ¦   ¦   ¦   +-- navbar.component.css
+¦   ¦   ¦   ¦   +-- navbar.component.html
+¦   ¦   ¦   ¦   +-- navbar.component.spec.ts
+¦   ¦   ¦   ¦   +-- navbar.component.ts
+¦   ¦   ¦   +-- sidebar
+¦   ¦   ¦       +-- sidebar.component.css
+¦   ¦   ¦       +-- sidebar.component.html
+¦   ¦   ¦       +-- sidebar.component.spec.ts
+¦   ¦   ¦       +-- sidebar.component.ts
+¦   ¦   +-- dashboard
+¦   ¦   ¦   +-- dashboard.component.css
+¦   ¦   ¦   +-- dashboard.component.html
+¦   ¦   ¦   +-- dashboard.component.spec.ts
+¦   ¦   ¦   +-- dashboard.component.ts
+¦   ¦   +-- icons
+¦   ¦   ¦   +-- icons.component.css
+¦   ¦   ¦   +-- icons.component.html
+¦   ¦   ¦   +-- icons.component.spec.ts
+¦   ¦   ¦   +-- icons.component.ts
+¦   ¦   +-- layouts
+¦   ¦   ¦   +-- admin-layout
+¦   ¦   ¦       +-- admin-layout.component.html
+¦   ¦   ¦       +-- admin-layout.component.scss
+¦   ¦   ¦       +-- admin-layout.component.spec.ts
+¦   ¦   ¦       +-- admin-layout.component.ts
+¦   ¦   ¦       +-- admin-layout.module.ts
+¦   ¦   ¦       +-- admin-layout.routing.ts
+¦   ¦   +-- maps
+¦   ¦   ¦   +-- maps.component.css
+¦   ¦   ¦   +-- maps.component.html
+¦   ¦   ¦   +-- maps.component.spec.ts
+¦   ¦   ¦   +-- maps.component.ts
+¦   ¦   +-- notifications
+¦   ¦   ¦   +-- notifications.component.css
+¦   ¦   ¦   +-- notifications.component.html
+¦   ¦   ¦   +-- notifications.component.spec.ts
+¦   ¦   ¦   +-- notifications.component.ts
+¦   ¦   +-- table-list
+¦   ¦   ¦   +-- table-list.component.css
+¦   ¦   ¦   +-- table-list.component.html
+¦   ¦   ¦   +-- table-list.component.spec.ts
+¦   ¦   ¦   +-- table-list.component.ts
+¦   ¦   +-- typography
+¦   ¦   ¦   +-- typography.component.css
+¦   ¦   ¦   +-- typography.component.html
+¦   ¦   ¦   +-- typography.component.spec.ts
+¦   ¦   ¦   +-- typography.component.ts
+¦   ¦   +-- upgrade
+¦   ¦   ¦   +-- upgrade.component.css
+¦   ¦   ¦   +-- upgrade.component.html
+¦   ¦   ¦   +-- upgrade.component.spec.ts
+¦   ¦   ¦   +-- upgrade.component.ts
+¦   ¦   +-- user-profile
+¦   ¦       +-- user-profile.component.css
+¦   ¦       +-- user-profile.component.html
+¦   ¦       +-- user-profile.component.spec.ts
+¦   ¦       +-- user-profile.component.ts
+¦   +-- assets
+¦   ¦   +-- css
+¦   ¦   ¦   +-- demo.css
+¦   ¦   +-- img
+¦   ¦   +-- scss
+¦   ¦       +-- core
+¦   ¦       +-- material-dashboard.scss
+¦   +-- environments
+¦   +-- favicon.ico
+¦   +-- index.html
+¦   +-- main.ts
+¦   +-- polyfills.ts
+¦   +-- styles.css
+¦   +-- test.ts
+¦   +-- tsconfig.app.json
+¦   +-- tsconfig.spec.json
+¦   +-- typings.d.ts
++-- tsconfig.json
++-- tslint.json
++-- typings
 
 ```
 
