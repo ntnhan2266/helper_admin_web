@@ -15,6 +15,7 @@ import {
 } from '@angular/material';
 import { SignUpComponent } from 'app/sign-up/sign-up.component';
 import { LogInComponent } from 'app/login/login.component';
+import { ForgotPasswordComponent } from 'app/forgot-password/forgot-password.component';
 
 @NgModule({
     imports: [
@@ -33,6 +34,7 @@ import { LogInComponent } from 'app/login/login.component';
     declarations: [
         LogInComponent,
         SignUpComponent,
+        ForgotPasswordComponent,
     ]
 })
 

@@ -13,6 +13,7 @@ import {AgmCoreModule} from '@agm/core';
 import {AdminLayoutComponent} from './layouts/admin-layout/admin-layout.component';
 import { AngularMaterialModule } from './angular-material.module';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    HttpClientModule,
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
