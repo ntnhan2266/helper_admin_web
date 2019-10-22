@@ -1,15 +1,15 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {BrowserModule} from '@angular/platform-browser';
-import {RouterModule, Routes} from '@angular/router';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
 
-import {AdminLayoutComponent} from './layouts/admin-layout/admin-layout.component';
-import {AuthComponent} from './auth/auth.component';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/users',
+    redirectTo: '/login',
     pathMatch: 'full',
   }, {
     path: '',
@@ -18,9 +18,14 @@ const routes: Routes = [
       path: '',
       loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
     }]
-  }, {
-    path: 'login',
-    component: AuthComponent
+  },
+  {
+    path: '',
+    component: AuthLayoutComponent,
+    children: [{
+      path: '',
+      loadChildren: './layouts/auth-layout/auth-layout.module#AuthLayoutModule'
+    }]
   },
 ];
 
