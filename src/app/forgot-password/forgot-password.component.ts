@@ -12,9 +12,11 @@ import { Router } from '@angular/router';
 export class ForgotPasswordComponent implements OnInit {
 
   form: FormGroup;
+  loading: boolean;
 
   constructor(private _formBuilder: FormBuilder, private _snackBar: MatSnackBar, private _auth: AuthService, private _router: Router) {
     this.createForm();
+    this.loading = false;
   }
 
   ngOnInit() {
@@ -34,7 +36,9 @@ export class ForgotPasswordComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
+      this.loading = true;
       this._auth.forgotPassword(this.form.value).subscribe((result) => {
+        this.loading = false;
         if (!result.errorCode) {
           this._router.navigate(['/login']);
           this.openSnackBar('Sent email', 'OK');

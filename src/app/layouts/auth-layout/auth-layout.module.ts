@@ -16,6 +16,7 @@ import {
 import { SignUpComponent } from 'app/sign-up/sign-up.component';
 import { LogInComponent } from 'app/login/login.component';
 import { ForgotPasswordComponent } from 'app/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from 'app/reset-password/reset-password.component';
 
 @NgModule({
     imports: [
@@ -35,6 +36,7 @@ import { ForgotPasswordComponent } from 'app/forgot-password/forgot-password.com
         LogInComponent,
         SignUpComponent,
         ForgotPasswordComponent,
+        ResetPasswordComponent,
     ]
 })
 

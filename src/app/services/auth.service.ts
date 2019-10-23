@@ -30,10 +30,24 @@ export class AuthService {
     );
   }
 
+  login(data): Observable<any> {
+    return this.http.post(endpoint + '/login-admin', JSON.stringify(data), httpOptions).pipe(
+      tap((result) => console.log(`login successfully ${result}`)),
+      catchError(this.handleError<any>('admin_login'))
+    );
+  }
+
   forgotPassword(data): Observable<any> {
     return this.http.post(endpoint + '/forgot-password', JSON.stringify(data), httpOptions).pipe(
       tap((result) => console.log(`send email successfully`)),
       catchError(this.handleError<any>('forgot_password'))
+    );
+  }
+
+  resetPassword(data): Observable<any> {
+    return this.http.post(endpoint + '/reset-password', JSON.stringify(data), httpOptions).pipe(
+      tap((result) => console.log(`update password successfully`)),
+      catchError(this.handleError<any>('reset_password'))
     );
   }
 

@@ -5,19 +5,37 @@
         <mat-card-title>Log in</mat-card-title>
       </mat-card-header>
   
-      <form class="example-form">
+      <form class="example-form" [formGroup]='form' novalidate (ngSubmit) = "onSubmit()">
         <mat-card-content>
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Email">
+            <input formControlName='email' matInput placeholder="Email">
+            <mat-hint class="error-message"
+              *ngIf='form.controls.email.invalid && (form.controls.email.dirty || form.controls.email.touched)'>
+              <div *ngIf='form.controls.email.errors.required'>
+                Email is required.
+              </div>
+              <div *ngIf='form.controls.email.errors.email'>
+                Invalid email format
+              </div>
+            </mat-hint>
           </mat-form-field>
   
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Password">
+            <input formControlName='password' type="password" matInput placeholder="Password">
+            <mat-hint class="error-message"
+              *ngIf='form.controls.password.invalid && (form.controls.password.dirty || form.controls.password.touched)'>
+              <div *ngIf='form.controls.password.errors.required'>
+                Passowrd is required.
+              </div>
+              <div *ngIf='form.controls.password.errors.minlength'>
+                Password is too short
+              </div>
+            </mat-hint>
           </mat-form-field>
 
           <a routerLink='/forgot-password'>Forgot Password?</a>
         </mat-card-content>
-        <button mat-flat-button color="primary" class="btn-block">Log in</button>
+        <button mat-flat-button [disabled]='loading' color="primary" class="btn-block">Log in</button>
       </form>
     </mat-card>
   
