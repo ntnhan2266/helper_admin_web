@@ -1,5 +1,19 @@
 <div class="main-content">
     <div class="container-fluid">
+        <form (ngSubmit)="getUser(null)">
+            <div class="row">
+
+                <div class="col-md-3">
+                    <mat-form-field class="example-full-width">
+                        <input [(ngModel)]="query" matInput name="query" placeholder="Search by name/email" type="text">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-1">
+                    <button class="btn btn-danger pull-right" mat-raised-button type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -32,27 +46,49 @@
                                     <th>
                                         Active
                                     </th>
+                                    <th>
+                                        Actions
+                                    </th>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                <tr *ngFor="let user of users; let i = index;">
                                         <td>
-                                            1
-                                        </td>
-                                        <td>
-                                            Dakota Rice
+                                            {{user.name ? user.name : '--'}}
                                         </td>
                                         <td>
-                                            Niger
+                                            {{user.email ? user.email : '--'}}
                                         </td>
                                         <td>
-                                            Oud-Turnhout
+                                            {{user.gender == 1 ? 'Male' : 'Female'}}
                                         </td>
-                                        <td class="text-primary">
-                                            $36,738
+                                        <td>
+                                            {{user.birthday ? (user.birthday | date) : '-'}}
                                         </td>
+                                    <td>
+                                        {{user.phoneNumber ? user.phoneNumber : '--'}}
+                                        </td>
+                                    <td>
+                                        {{user.address ? user.address : '--'}}
+                                    </td>
+                                    <td>
+                                        {{user.isActive ? 'Yes' : 'No'}}
+                                    </td>
+                                    <td>
+                                        <button [matMenuTriggerFor]="menu" mat-button>
+                                            <mat-icon>more_vert</mat-icon>
+                                        </button>
+                                        <mat-menu #menu="matMenu">
+                                            <button mat-menu-item>Active</button>
+                                            <button mat-menu-item>Item 2</button>
+                                        </mat-menu>
+                                    </td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <mat-paginator (page)="pageEvent = getUser($event)"
+                                           [length]="total"
+                                           [pageSize]="pageSize">
+                            </mat-paginator>
                         </div>
                     </div>
                 </div>

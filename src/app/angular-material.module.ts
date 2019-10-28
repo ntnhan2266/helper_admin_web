@@ -1,26 +1,27 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
 import {
-   MatButtonModule,
-   MatToolbarModule,
-   MatIconModule,
    MatBadgeModule,
-   MatSidenavModule,
-   MatListModule,
-   MatGridListModule,
-   MatFormFieldModule,
-   MatInputModule,
-   MatSelectModule,
-   MatRadioModule,
-   MatDatepickerModule,
-   MatNativeDateModule,
+   MatButtonModule,
    MatChipsModule,
-   MatTooltipModule,
-   MatTableModule,
+   MatDatepickerModule,
+   MatFormFieldModule,
+   MatGridListModule,
+   MatIconModule,
+   MatInputModule,
+   MatListModule,
+   MatNativeDateModule,
    MatPaginatorModule,
+   MatRadioModule,
+   MatSelectModule,
+   MatSidenavModule,
    MatSnackBarModule,
+   MatTableModule,
+   MatToolbarModule,
+   MatTooltipModule,
 } from '@angular/material';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
    imports: [
@@ -42,7 +43,8 @@ import {
       MatTooltipModule,
       MatTableModule,
       MatPaginatorModule,
-      MatSnackBarModule
+      MatSnackBarModule,
+      MatMenuModule
    ],
    exports: [
       MatButtonModule,
@@ -52,15 +54,18 @@ import {
       MatBadgeModule,
       MatListModule,
       MatGridListModule,
-      MatInputModule,
       MatFormFieldModule,
+      MatInputModule,
       MatSelectModule,
       MatRadioModule,
       MatDatepickerModule,
+      MatNativeDateModule,
       MatChipsModule,
       MatTooltipModule,
       MatTableModule,
-      MatPaginatorModule
+      MatPaginatorModule,
+      MatSnackBarModule,
+      MatMenuModule,
    ],
    providers: [
       MatDatepickerModule,

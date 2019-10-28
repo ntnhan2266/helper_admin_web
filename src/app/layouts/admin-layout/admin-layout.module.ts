@@ -12,8 +12,7 @@ import {MapsComponent} from '../../maps/maps.component';
 import {NotificationsComponent} from '../../notifications/notifications.component';
 import {UpgradeComponent} from '../../upgrade/upgrade.component';
 import {UsersComponent} from '../../users/users.component';
-
-import {MatButtonModule, MatFormFieldModule, MatInputModule, MatRippleModule, MatSelectModule, MatTooltipModule} from '@angular/material';
+import {AngularMaterialModule} from '../../angular-material.module';
 
 @NgModule({
     imports: [
@@ -21,12 +20,7 @@ import {MatButtonModule, MatFormFieldModule, MatInputModule, MatRippleModule, Ma
         RouterModule.forChild(AdminLayoutRoutes),
         FormsModule,
         ReactiveFormsModule,
-        MatButtonModule,
-        MatRippleModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatSelectModule,
-        MatTooltipModule,
+        AngularMaterialModule,
     ],
     declarations: [
         DashboardComponent,

@@ -1,9 +1,9 @@
-
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material';
-import { AuthService } from 'app/services/auth.service';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {MatSnackBar} from '@angular/material';
+import {AuthService} from 'app/layouts/auth-layout/auth.service';
+import {Router} from '@angular/router';
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-log-in',
@@ -16,9 +16,10 @@ export class LogInComponent implements OnInit {
   loading = false;
 
   constructor(private _formBuilder: FormBuilder,
-    private _snackBar: MatSnackBar,
-    private _auth: AuthService,
-    private _router: Router) {
+              private _snackBar: MatSnackBar,
+              private _auth: AuthService,
+              private _cookieService: CookieService,
+              private _router: Router) {
     this.createForm();
   }
 
@@ -45,6 +46,8 @@ export class LogInComponent implements OnInit {
       this._auth.login(this.form.value).subscribe((result) => {
         this.loading = false;
         if (!result.errorCode) {
+            this._cookieService.set('X-Token', result.token);
+            this._cookieService.set('User', JSON.stringify(result.user));
           this._router.navigate(['/users']);
         } else {
           this.openSnackBar('Invalid credentials', 'OK');

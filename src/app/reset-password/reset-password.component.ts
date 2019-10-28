@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material';
-import { AuthService } from 'app/services/auth.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { MustMatch } from 'app/helper/must-match.validator';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {MatSnackBar} from '@angular/material';
+import {AuthService} from 'app/layouts/auth-layout/auth.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {MustMatch} from 'app/helper/must-match.validator';
 
 @Component({
     selector: 'app-reset-password',
@@ -52,7 +52,7 @@ export class ResetPasswordComponent implements OnInit {
                 password: this.form.value.password
             };
             this._auth.resetPassword(data).subscribe((result) => {
-                console.log(result)
+                console.log(result);
                 this.loading = false;
                 if (!result.errorCode) {
                     this._router.navigate(['/login']);

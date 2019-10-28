@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MustMatch } from 'app/helper/must-match.validator';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { AuthService } from '../services/auth.service'
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {MustMatch} from 'app/helper/must-match.validator';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {AuthService} from '../layouts/auth-layout/auth.service'
 
 @Component({
   selector: 'app-sign-up',
