@@ -20,10 +20,10 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getUser(null);
+    this.getData(null);
   }
 
-  public getUser(event?: PageEvent) {
+  public getData(event?: PageEvent) {
     this._userService.list({
       pageIndex: event ? event.pageIndex : 0,
       pageSize: this.pageSize,

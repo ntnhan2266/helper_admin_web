@@ -13,7 +13,6 @@ import { CookieService } from 'ngx-cookie-service';
 export class UsersService extends APIService {
     constructor(public http: HttpClient, public cookieService: CookieService) {
         super(http, cookieService);
-        console.log(this.httpOptions.headers);
     }
 
     list(data): Observable<any> {

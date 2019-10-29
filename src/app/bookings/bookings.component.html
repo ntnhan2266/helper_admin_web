@@ -18,74 +18,83 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-danger">
-                        <h4 class="card-title ">Users</h4>
-                        <p class="card-category">Here is the info of all users</p>
+                        <h4 class="card-title ">Bookings</h4>
+                        <p class="card-category">List of bookings</p>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class=" text-primary">
                                     <th>
-                                        Name
+                                        Type
                                     </th>
                                     <th>
-                                        Email
+                                        Date
                                     </th>
                                     <th>
-                                        Gender
+                                        Time
                                     </th>
                                     <th>
-                                        Birthday
+                                        Helper
                                     </th>
                                     <th>
-                                        PhoneNumber
+                                        Customer
                                     </th>
                                     <th>
                                         Address
                                     </th>
                                     <th>
-                                        Active
+                                        Booking Status
+                                    </th>
+                                    <th>
+                                        Booking Time
                                     </th>
                                     <th>
                                         Actions
                                     </th>
                                 </thead>
                                 <tbody>
-                                <tr *ngFor="let user of users; let i = index;">
+                                <tr *ngFor="let booking of bookings; let i = index;">
                                         <td>
-                                            {{user.name ? user.name : '--'}}
+                                            {{getType(booking.type)}}
                                         </td>
                                         <td>
-                                            {{user.email ? user.email : '--'}}
+                                            {{booking.startDate | date: 'dd/MM/yyyy'}} - {{ booking.endDate ? (booking.endDate | date: 'dd/MM/yyyy') : ''}}
                                         </td>
                                         <td>
-                                            {{user.gender == 1 ? 'Male' : 'Female'}}
+                                            {{booking.startTime | date: 'HH:mm'}} - {{ booking.endTime | date: 'HH:mm'}}
                                         </td>
                                         <td>
-                                            {{user.birthday ? (user.birthday | date) : '-'}}
+                                            {{booking.maid.user ? booking.maid.user.name : '--'}}
                                         </td>
                                     <td>
-                                        {{user.phoneNumber ? user.phoneNumber : '--'}}
+                                        {{booking.createdBy ? booking.createdBy.name : '--'}}
                                         </td>
                                     <td>
-                                        {{user.address ? user.address : '--'}}
+                                        {{booking.address ? booking.address : '--'}}
                                     </td>
                                     <td>
-                                        {{user.isActive ? 'Yes' : 'No'}}
+                                        {{getStatus(booking.status)}}
+                                    </td>
+                                    <td>
+                                        {{booking.createdAt | date: 'dd/MM/yyyy HH:mm'}}
                                     </td>
                                     <td>
                                         <button [matMenuTriggerFor]="menu" mat-button>
                                             <mat-icon>more_vert</mat-icon>
                                         </button>
                                         <mat-menu #menu="matMenu">
-                                            <button *ngIf="!user.isActive" (click)="activeUser(user._id, i)" mat-menu-item>Active</button>
-                                            <button *ngIf="user.isActive" (click)="deactiveUser(user._id, i)" mat-menu-item>Deactive</button>
+                                            <button (click)="deactiveUser(user._id, i)" mat-menu-item>Show details</button>
+                                            <button *ngIf="booking.status != 4 && booking.status != 5" 
+                                                (click)="deactiveUser(user._id, i)" mat-menu-item>
+                                                Cancel
+                                            </button>
                                         </mat-menu>
                                     </td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <mat-paginator (page)="pageEvent = getData($event)"
+                            <mat-paginator (page)="pageEvent = getUser($event)"
                                            [length]="total"
                                            [pageSize]="pageSize">
                             </mat-paginator>

@@ -1,21 +1,22 @@
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NgModule} from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
-import {RouterModule} from '@angular/router';
-import {CookieService} from 'ngx-cookie-service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 
-import {AppRoutingModule} from './app.routing';
-import {ComponentsModule} from './components/components.module';
+import { AppRoutingModule } from './app.routing';
+import { ComponentsModule } from './components/components.module';
 
-import {AppComponent} from './app.component';
-import {AgmCoreModule} from '@agm/core';
-import {AdminLayoutComponent} from './layouts/admin-layout/admin-layout.component';
-import {AngularMaterialModule} from './angular-material.module';
-import {AuthLayoutComponent} from './layouts/auth-layout/auth-layout.component';
-import {HttpClientModule} from '@angular/common/http';
-import {AuthGuardService as AuthGuard} from './auth/auth-guard.service';
+import { AppComponent } from './app.component';
+import { AgmCoreModule } from '@agm/core';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { AngularMaterialModule } from './angular-material.module';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
+import { BookingDetailsDialogComponent } from './dialogs/booking-details-dialog/booking-details-dialog.component';
 
 @NgModule({
   imports: [
@@ -36,8 +37,12 @@ import {AuthGuardService as AuthGuard} from './auth/auth-guard.service';
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
+    BookingDetailsDialogComponent,
   ],
-    providers: [CookieService, AuthGuard],
-  bootstrap: [AppComponent]
+  providers: [CookieService, AuthGuard],
+  bootstrap: [AppComponent],
+  entryComponents: [
+    BookingDetailsDialogComponent
+  ]
 })
 export class AppModule { }
