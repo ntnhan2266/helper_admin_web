@@ -17,28 +17,24 @@ export class AuthService extends APIService {
 
   register(data): Observable<any> {
       return this.http.post(environment.apiUrl + '/register-admin', JSON.stringify(data), this.httpOptions).pipe(
-      tap((result) => console.log(`register successfully ${result}`)),
       catchError(this.handleError<any>('register_new_account'))
     );
   }
 
   login(data): Observable<any> {
       return this.http.post(environment.apiUrl + '/login-admin', JSON.stringify(data), this.httpOptions).pipe(
-      tap((result) => console.log(`login successfully ${result}`)),
       catchError(this.handleError<any>('admin_login'))
     );
   }
 
   forgotPassword(data): Observable<any> {
       return this.http.post(environment.apiUrl + '/forgot-password', JSON.stringify(data), this.httpOptions).pipe(
-      tap((result) => console.log(`send email successfully`)),
       catchError(this.handleError<any>('forgot_password'))
     );
   }
 
   resetPassword(data): Observable<any> {
       return this.http.post(environment.apiUrl + '/reset-password', JSON.stringify(data), this.httpOptions).pipe(
-      tap((result) => console.log(`update password successfully`)),
       catchError(this.handleError<any>('reset_password'))
     );
   }

@@ -78,8 +78,8 @@
                                             <mat-icon>more_vert</mat-icon>
                                         </button>
                                         <mat-menu #menu="matMenu">
-                                            <button mat-menu-item>Active</button>
-                                            <button mat-menu-item>Item 2</button>
+                                            <button *ngIf="!user.isActive" (click)="activeUser(user._id, i)" mat-menu-item>Active</button>
+                                            <button *ngIf="user.isActive" (click)="deactiveUser(user._id, i)" mat-menu-item>Deactive</button>
                                         </mat-menu>
                                     </td>
                                     </tr>

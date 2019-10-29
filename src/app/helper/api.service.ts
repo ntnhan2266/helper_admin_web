@@ -14,11 +14,13 @@ export class APIService {
             'Content-Type': 'application/json',
         })
     };
+
     constructor(protected http: HttpClient, protected cookieService: CookieService) {
         const tokenExists: boolean = this.cookieService.check('X-Token');
+        console.log(tokenExists);
         if (tokenExists) {
             const token: String = this.cookieService.get('X-Token');
-            this.httpOptions.headers.append('Authorization', `Bearer ${token}`);
+            this.httpOptions.headers = this.httpOptions.headers.append('Authorization', `Bearer ${token}`);
         }
     }
 

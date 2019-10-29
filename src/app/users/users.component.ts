@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {UsersService} from './users.service';
-import {PageEvent} from '@angular/material/paginator';
+import { Component, OnInit } from '@angular/core';
+import { UsersService } from './users.service';
+import { PageEvent } from '@angular/material/paginator';
+import { UtilsService } from 'app/helper/utils.service';
 
 @Component({
   selector: 'app-users',
@@ -14,7 +15,8 @@ export class UsersComponent implements OnInit {
   pageEvent: PageEvent;
   query = '';
 
-  constructor(private _userService: UsersService) {
+  constructor(private _userService: UsersService,
+    private _utilService: UtilsService, ) {
   }
 
   ngOnInit() {
@@ -27,13 +29,31 @@ export class UsersComponent implements OnInit {
       pageSize: this.pageSize,
       query: this.query,
     })
-        .subscribe((result) => {
-          if (!result.errorCode) {
-            this.users = result.users;
-            this.total = result.total;
-          }
-        });
+      .subscribe((result) => {
+        if (!result.errorCode) {
+          this.users = result.users;
+          this.total = result.total;
+        }
+      });
     return event;
+  }
+
+  public activeUser(id: string, index: number) {
+    this._userService.active(id).subscribe(result => {
+      if (!result.errorCode) {
+        this.users[index].isActive = true;
+        this._utilService.showNotification('top', 'right', 'Active user successfully', this._utilService.type.success);
+      }
+    })
+  }
+
+  public deactiveUser(id: string, index: number) {
+    this._userService.deactive(id).subscribe(result => {
+      if (!result.errorCode) {
+        this.users[index].isActive = false;
+        this._utilService.showNotification('top', 'right', 'Active user successfully', this._utilService.type.success);
+      }
+    })
   }
 
 }
