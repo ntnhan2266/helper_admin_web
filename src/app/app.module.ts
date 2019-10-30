@@ -17,6 +17,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
 import { BookingDetailsDialogComponent } from './dialogs/booking-details-dialog/booking-details-dialog.component';
+import { BookingCancelDialogComponent } from './dialogs/booking-cancel-dialog/booking-cancel-dialog.component';
 
 @NgModule({
   imports: [
@@ -38,11 +39,13 @@ import { BookingDetailsDialogComponent } from './dialogs/booking-details-dialog/
     AdminLayoutComponent,
     AuthLayoutComponent,
     BookingDetailsDialogComponent,
+    BookingCancelDialogComponent,
   ],
   providers: [CookieService, AuthGuard],
   bootstrap: [AppComponent],
   entryComponents: [
-    BookingDetailsDialogComponent
+    BookingDetailsDialogComponent,
+    BookingCancelDialogComponent,
   ]
 })
 export class AppModule { }

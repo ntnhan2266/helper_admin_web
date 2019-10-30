@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { BookingsService } from './bookings.service';
 import { PageEvent } from '@angular/material/paginator';
 import { UtilsService } from 'app/helper/utils.service';
+import { MatDialog, MatDialogConfig } from '@angular/material';
+import { BookingDetailsDialogComponent } from 'app/dialogs/booking-details-dialog/booking-details-dialog.component';
+import { BookingCancelDialogComponent } from 'app/dialogs/booking-cancel-dialog/booking-cancel-dialog.component';
+import { AppConstants } from 'app/helper/constants';
 
 @Component({
     selector: 'app-users',
@@ -16,6 +20,7 @@ export class BookingsComponent implements OnInit {
     query = '';
 
     constructor(private _bookingService: BookingsService,
+        private _dialog: MatDialog,
         private _utilService: UtilsService, ) {
     }
 
@@ -38,11 +43,30 @@ export class BookingsComponent implements OnInit {
         return event;
     }
 
-    public getType(type: number) {
+    public openDetailsDialog(): void {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+        this._dialog.open(BookingCancelDialogComponent, dialogConfig);
+    }
+
+    public cancelBooking(id, index): void {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+        dialogConfig.width = '450px';
+        dialogConfig.data = { id };
+        const dialogRef = this._dialog.open(BookingCancelDialogComponent, dialogConfig);
+        dialogRef.afterClosed().subscribe((_) => {
+            this.bookings[index].status = AppConstants.BOOKING_STATUS.CANCELLED;
+        });
+    }
+
+    public getType(type: number): string {
         return this._utilService.getBookingType(type);
     }
 
-    public getStatus(status: number) {
+    public getStatus(status: number): string {
         return this._utilService.getBookingStatus(status);
     }
 }

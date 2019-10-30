@@ -84,9 +84,9 @@
                                             <mat-icon>more_vert</mat-icon>
                                         </button>
                                         <mat-menu #menu="matMenu">
-                                            <button (click)="deactiveUser(user._id, i)" mat-menu-item>Show details</button>
+                                            <!-- <button (click)="openDetailsDialog()" mat-menu-item>Show details</button> -->
                                             <button *ngIf="booking.status != 4 && booking.status != 5" 
-                                                (click)="deactiveUser(user._id, i)" mat-menu-item>
+                                                (click)="cancelBooking(booking._id, i)" mat-menu-item>
                                                 Cancel
                                             </button>
                                         </mat-menu>

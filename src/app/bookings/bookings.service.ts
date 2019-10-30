@@ -13,7 +13,6 @@ import { CookieService } from 'ngx-cookie-service';
 export class BookingsService extends APIService {
     constructor(public http: HttpClient, public cookieService: CookieService) {
         super(http, cookieService);
-        console.log(this.httpOptions.headers);
     }
 
     list(data): Observable<any> {
@@ -21,6 +20,14 @@ export class BookingsService extends APIService {
             + `/bookings/list?pageIndex=${data.pageIndex}&pageSize=${data.pageSize}`, this.httpOptions)
             .pipe(
                 catchError(this.handleError<any>('load_bookings'))
+            );
+    }
+
+    cancel(id): Observable<any> {
+        return this.http.put(environment.apiUrl
+            + `/booking/admin-cancel`, {id}, this.httpOptions)
+            .pipe(
+                catchError(this.handleError<any>('admin_cancel_bookings'))
             );
     }
 

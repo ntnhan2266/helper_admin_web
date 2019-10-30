@@ -7,15 +7,16 @@ export interface DialogData {
 }
 
 @Component({
-    selector: 'app-booking-details-dialog',
-    templateUrl: './booking-details-dialog.component.html',
-    styleUrls: ['./booking-details-dialog.component.scss']
+    selector: 'app-booking-cancel-dialog',
+    templateUrl: './booking-cancel-dialog.component.html',
+    styleUrls: ['./booking-cancel-dialog.component.scss']
 })
 
-export class BookingDetailsDialogComponent {
+export class BookingCancelDialogComponent {
+    reason: string;
 
     constructor(
-        public dialogRef: MatDialogRef<BookingDetailsDialogComponent>,
+        public dialogRef: MatDialogRef<BookingCancelDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
 
     onNoClick(): void {
