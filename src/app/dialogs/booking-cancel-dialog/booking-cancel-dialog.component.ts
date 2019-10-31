@@ -1,9 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { BookingsService } from 'app/bookings/bookings.service';
 
 export interface DialogData {
-    animal: string;
-    name: string;
+    id: string;
 }
 
 @Component({
@@ -13,9 +13,10 @@ export interface DialogData {
 })
 
 export class BookingCancelDialogComponent {
-    reason: string;
+    content: string;
 
     constructor(
+        private bookingService: BookingsService,
         public dialogRef: MatDialogRef<BookingCancelDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
 
@@ -25,6 +26,12 @@ export class BookingCancelDialogComponent {
 
     close(): void {
         this.dialogRef.close();
+    }
+
+    cancelBooking() {
+        this.bookingService.cancel(this.data.id, this.content).subscribe((res) => {
+            this.dialogRef.close('OK');
+        })
     }
 
 }

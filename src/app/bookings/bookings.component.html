@@ -1,6 +1,6 @@
 <div class="main-content">
     <div class="container-fluid">
-        <form (ngSubmit)="getUser(null)">
+        <!-- <form (ngSubmit)="getUser(null)">
             <div class="row">
 
                 <div class="col-md-3">
@@ -12,7 +12,7 @@
                     <button class="btn btn-danger pull-right" mat-raised-button type="submit">Search</button>
                 </div>
             </div>
-        </form>
+        </form> -->
 
         <div class="row">
             <div class="col-md-12">
@@ -85,7 +85,7 @@
                                         </button>
                                         <mat-menu #menu="matMenu">
                                             <!-- <button (click)="openDetailsDialog()" mat-menu-item>Show details</button> -->
-                                            <button *ngIf="booking.status != 4 && booking.status != 5" 
+                                            <button *ngIf="booking.status != 4 && booking.status != 5 && booking.status != 3" 
                                                 (click)="cancelBooking(booking._id, i)" mat-menu-item>
                                                 Cancel
                                             </button>

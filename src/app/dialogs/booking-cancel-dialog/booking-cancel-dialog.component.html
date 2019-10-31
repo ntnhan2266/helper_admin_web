@@ -1,10 +1,10 @@
 <h1 mat-dialog-title>Booking details</h1>
 <div mat-dialog-content>
     <mat-form-field>
-        <textarea matInput placeholder="Description" [(ngModel)]='reason' ></textarea>
+        <textarea matInput placeholder="Description" [(ngModel)]='content' ></textarea>
     </mat-form-field>
 </div>
 <div mat-dialog-actions>
     <button class="mat-raised-button btn-default" (click)="close()">Close</button>
-    <button class="mat-raised-button btn-danger" (click)="close()">OK</button>
+    <button class="mat-raised-button btn-danger" (click)="cancelBooking()">OK</button>
 </div>

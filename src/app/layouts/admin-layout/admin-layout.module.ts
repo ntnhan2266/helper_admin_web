@@ -14,6 +14,7 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { UsersComponent } from '../../users/users.component';
 import { AngularMaterialModule } from '../../angular-material.module';
 import { BookingsComponent } from 'app/bookings/bookings.component';
+import { ServiceCategoriesComponent } from 'app/service-categories/service-categories.component';
 
 @NgModule({
     imports: [
@@ -33,7 +34,8 @@ import { BookingsComponent } from 'app/bookings/bookings.component';
         NotificationsComponent,
         UpgradeComponent,
         UsersComponent,
-        BookingsComponent
+        BookingsComponent,
+        ServiceCategoriesComponent,
     ]
 })
 

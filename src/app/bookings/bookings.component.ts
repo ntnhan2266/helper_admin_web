@@ -3,12 +3,11 @@ import { BookingsService } from './bookings.service';
 import { PageEvent } from '@angular/material/paginator';
 import { UtilsService } from 'app/helper/utils.service';
 import { MatDialog, MatDialogConfig } from '@angular/material';
-import { BookingDetailsDialogComponent } from 'app/dialogs/booking-details-dialog/booking-details-dialog.component';
 import { BookingCancelDialogComponent } from 'app/dialogs/booking-cancel-dialog/booking-cancel-dialog.component';
 import { AppConstants } from 'app/helper/constants';
 
 @Component({
-    selector: 'app-users',
+    selector: 'app-bookings',
     templateUrl: './bookings.component.html',
     styleUrls: ['./bookings.component.scss']
 })

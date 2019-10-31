@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 declare const $: any;
 
@@ -10,8 +10,9 @@ declare interface RouteInfo {
 }
 
 export const ROUTES: RouteInfo[] = [
-    {path: '/users', title: 'Users', icon: 'people', class: ''},
-    {path: '/bookings', title: 'Bookings', icon: 'list_alt', class: ''},
+    { path: '/users', title: 'Users', icon: 'people', class: '' },
+    { path: '/bookings', title: 'Bookings', icon: 'list_alt', class: '' },
+    { path: '/categories', title: 'Catergories', icon: 'category', class: '' },
 ];
 
 @Component({
