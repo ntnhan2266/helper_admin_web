@@ -13,6 +13,11 @@
                 </div>
             </div>
         </form> -->
+        <div class="row">
+            <div class="col-md-3">
+                <button class="btn btn-danger" mat-raised-button routerLink='/category/detail'>New category</button>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-md-12">
@@ -29,7 +34,10 @@
                                         Icon
                                     </th>
                                     <th>
-                                        Service Name
+                                        Service Name (VI)
+                                    </th>
+                                    <th>
+                                        Service Name (EN)
                                     </th>
                                     <th>
                                         Order
@@ -37,43 +45,33 @@
                                     <th>
                                         Active
                                     </th>
+                                    <th>
+                                        Actions
+                                    </th>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let booking of bookings; let i = index;">
+                                    <tr *ngFor="let category of categories; let i = index;">
                                         <td>
-                                            {{getType(booking.type)}}
+                                            {{category.icon}}
                                         </td>
                                         <td>
-                                            {{booking.startDate | date: 'dd/MM/yyyy'}} -
-                                            {{ booking.endDate ? (booking.endDate | date: 'dd/MM/yyyy') : ''}}
+                                            {{category.nameVi}}
                                         </td>
                                         <td>
-                                            {{booking.startTime | date: 'HH:mm'}} - {{ booking.endTime | date: 'HH:mm'}}
+                                            {{category.nameEn}}
                                         </td>
                                         <td>
-                                            {{booking.maid.user ? booking.maid.user.name : '--'}}
+                                            {{category.order}}
                                         </td>
                                         <td>
-                                            {{booking.createdBy ? booking.createdBy.name : '--'}}
-                                        </td>
-                                        <td>
-                                            {{booking.address ? booking.address : '--'}}
-                                        </td>
-                                        <td>
-                                            {{getStatus(booking.status)}}
-                                        </td>
-                                        <td>
-                                            {{booking.createdAt | date: 'dd/MM/yyyy HH:mm'}}
+                                            {{category.active}}
                                         </td>
                                         <td>
                                             <button [matMenuTriggerFor]="menu" mat-button>
                                                 <mat-icon>more_vert</mat-icon>
                                             </button>
                                             <mat-menu #menu="matMenu">
-                                                <!-- <button (click)="openDetailsDialog()" mat-menu-item>Show details</button> -->
-                                                <button
-                                                    *ngIf="booking.status != 4 && booking.status != 5 && booking.status != 3"
-                                                    (click)="cancelBooking(booking._id, i)" mat-menu-item>
+                                                <button mat-menu-item>
                                                     Cancel
                                                 </button>
                                             </mat-menu>
