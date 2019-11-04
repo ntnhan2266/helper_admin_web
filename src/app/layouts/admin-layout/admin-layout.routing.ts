@@ -8,6 +8,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'users', component: UsersComponent },
     { path: 'bookings', component: BookingsComponent },
     { path: 'categories', component: ServiceCategoriesComponent },
-    { path: 'category/detail/:id', component: ServiceCategoryDetailsComponent },
-    { path: 'category/detail', component: ServiceCategoryDetailsComponent }
+    { path: 'categories/detail/:id', component: ServiceCategoryDetailsComponent },
+    { path: 'categories/detail', component: ServiceCategoryDetailsComponent }
 ];

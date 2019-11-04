@@ -15,7 +15,7 @@ export class UsersService extends APIService {
         super(http, cookieService);
     }
 
-    list(data): Observable<any> {
+    list(data: any): Observable<any> {
         return this.http.get(environment.apiUrl
             + `/users?pageIndex=${data.pageIndex}&pageSize=${data.pageSize}&query=${data.query}`, this.httpOptions)
             .pipe(
@@ -23,7 +23,7 @@ export class UsersService extends APIService {
             );
     }
 
-    active(id): Observable<any> {
+    active(id: any): Observable<any> {
         return this.http.put(environment.apiUrl
             + `/user/active`, { id }, this.httpOptions)
             .pipe(
@@ -31,7 +31,7 @@ export class UsersService extends APIService {
             );
     }
 
-    deactive(id): Observable<any> {
+    deactive(id: any): Observable<any> {
         return this.http.put(environment.apiUrl
             + `/user/deactive`, { id }, this.httpOptions)
             .pipe(

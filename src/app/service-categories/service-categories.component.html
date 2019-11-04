@@ -15,7 +15,7 @@
         </form> -->
         <div class="row">
             <div class="col-md-3">
-                <button class="btn btn-danger" mat-raised-button routerLink='/category/detail'>New category</button>
+                <button class="btn btn-danger" mat-raised-button routerLink='/categories/detail'>New category</button>
             </div>
         </div>
 
@@ -52,7 +52,7 @@
                                 <tbody>
                                     <tr *ngFor="let category of categories; let i = index;">
                                         <td>
-                                            {{category.icon}}
+                                            <img class='category-icon' [src]="env.imageHost + category.icon">
                                         </td>
                                         <td>
                                             {{category.nameVi}}
@@ -64,15 +64,21 @@
                                             {{category.order}}
                                         </td>
                                         <td>
-                                            {{category.active}}
+                                            {{category.isActive ? 'Yes' : 'No'}}
                                         </td>
                                         <td>
                                             <button [matMenuTriggerFor]="menu" mat-button>
                                                 <mat-icon>more_vert</mat-icon>
                                             </button>
                                             <mat-menu #menu="matMenu">
-                                                <button mat-menu-item>
-                                                    Cancel
+                                                <button mat-menu-item (click)='goToDetail(category._id)'>
+                                                    Detail
+                                                </button>
+                                                <button mat-menu-item *ngIf='category.isActive' (click)='deactive(category._id, i)'>
+                                                    Deactive
+                                                </button>
+                                                <button mat-menu-item *ngIf='!category.isActive' (click)='active(category._id, i)'>
+                                                    Active
                                                 </button>
                                             </mat-menu>
                                         </td>

@@ -16,11 +16,29 @@ export class ServiceCategoriesService extends APIService {
         super(http, cookieService);
     }
 
-    list(data): Observable<any> {
+    list(data: any): Observable<any> {
         return this.http.get(environment.apiUrl
-            + `/categories/list?pageIndex=${data.pageIndex}&pageSize=${data.pageSize}`, this.httpOptions)
+            + `/categories?pageIndex=${data.pageIndex}&pageSize=${data.pageSize}`, this.httpOptions)
             .pipe(
                 catchError(this.handleError<any>('load_bookings'))
+            );
+    }
+
+    active(id: string): Observable<any> {
+        return this.http.put(environment.apiUrl + `/category/active`,
+            {_id: id},
+            this.httpOptions)
+            .pipe(
+                catchError(this.handleError<any>('active_category_id_' + id))
+            );
+    }
+
+    deactive(id: string): Observable<any> {
+        return this.http.put(environment.apiUrl + `/category/deactive`,
+            {_id: id},
+            this.httpOptions)
+            .pipe(
+                catchError(this.handleError<any>('deactive_category_id_' + id))
             );
     }
 

@@ -8,52 +8,48 @@
                         <p class="card-category">Complete your category data</p>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form [formGroup]='form' (ngSubmit)="onSubmit()">
                             <div class="row">
                                 <div class="col-md-6">
                                   <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Name(VI)" type="text">
+                                    <input matInput placeholder="Name(VI)" type="text" formControlName="nameVi" [(ngModel)]='category.nameVi'>
                                   </mat-form-field>
                                 </div>
                                 <div class="col-md-6">
                                   <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Name(EN)" type="text">
+                                    <input matInput placeholder="Name(EN)" type="text" formControlName="nameEn" [(ngModel)]='category.nameEn'>
                                   </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                   <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Order" type="number">
+                                    <input matInput placeholder="Order" type="number" formControlName="order" [(ngModel)]='category.order'>
                                   </mat-form-field>
                                 </div>
                                 <div class="col-md-6 d-flex align-items-center">
-                                    <mat-slide-toggle>Active</mat-slide-toggle>
+                                    <mat-slide-toggle formControlName="isActive" [(ngModel)]='category.isActive'>Active</mat-slide-toggle>
                                   </div>
                             </div>
-                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Save</button>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="icon">Icon</label> 
+                                    <br>
+                                    <div class="form-group" *ngIf='category.icon' >
+                                        <img class='category-icon' [src]="env.imageHost + category.icon">
+                                    </div>
+                                    <label class="file-upload-label" for="icon">
+                                        <input id='icon' type='file' (change)="handleFileSelect($event)">
+                                        CHOOSE FILE
+                                    </label>
+                                </div>
+                            </div>
+                            <button [disabled]='loading' mat-raised-button type="submit" class="btn btn-danger pull-right">Save</button>
                             <div class="clearfix"></div>
                         </form>
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-md-4">
-                <div class="card card-profile">
-                    <div class="card-avatar">
-                        <a href="javascript:void(0)">
-                            <img class="img" src="./assets/img/faces/marc.jpg" />
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="card-category text-gray">CEO / Co-Founder</h6>
-                        <h4 class="card-title">Alec Thompson</h4>
-                        <p class="card-description">
-                            Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                        </p>
-                        <a href="javascript:void(0)" class="btn btn-danger btn-round">Follow</a>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
   </div>

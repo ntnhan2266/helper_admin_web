@@ -16,11 +16,29 @@ export class ServiceCategoryDetailsService extends APIService {
         super(http, cookieService);
     }
 
-    list(data): Observable<any> {
-        return this.http.get(environment.apiUrl
-            + `/categories/list?pageIndex=${data.pageIndex}&pageSize=${data.pageSize}`, this.httpOptions)
+    save(data: any): Observable<any> {
+        return this.http.post(environment.apiUrl + `/category`,
+            data,
+            this.httpOptions)
             .pipe(
-                catchError(this.handleError<any>('load_bookings'))
+                catchError(this.handleError<any>('save_category'))
+            );
+    }
+
+    edit(data: any): Observable<any> {
+        return this.http.put(environment.apiUrl + `/category/edit`,
+            data,
+            this.httpOptions)
+            .pipe(
+                catchError(this.handleError<any>('edit_category_id_' + data._id))
+            );
+    }
+
+    details(id: string): Observable<any> {
+        return this.http.get(environment.apiUrl + `/category?id=${id}`,
+            this.httpOptions)
+            .pipe(
+                catchError(this.handleError<any>('load_category_id_' + id))
             );
     }
 

@@ -15,25 +15,25 @@ export class AuthService extends APIService {
         super(http, cookieService);
   }
 
-  register(data): Observable<any> {
+  register(data: any): Observable<any> {
       return this.http.post(environment.apiUrl + '/register-admin', JSON.stringify(data), this.httpOptions).pipe(
       catchError(this.handleError<any>('register_new_account'))
     );
   }
 
-  login(data): Observable<any> {
+  login(data: any): Observable<any> {
       return this.http.post(environment.apiUrl + '/login-admin', JSON.stringify(data), this.httpOptions).pipe(
       catchError(this.handleError<any>('admin_login'))
     );
   }
 
-  forgotPassword(data): Observable<any> {
+  forgotPassword(data: any): Observable<any> {
       return this.http.post(environment.apiUrl + '/forgot-password', JSON.stringify(data), this.httpOptions).pipe(
       catchError(this.handleError<any>('forgot_password'))
     );
   }
 
-  resetPassword(data): Observable<any> {
+  resetPassword(data: any): Observable<any> {
       return this.http.post(environment.apiUrl + '/reset-password', JSON.stringify(data), this.httpOptions).pipe(
       catchError(this.handleError<any>('reset_password'))
     );
