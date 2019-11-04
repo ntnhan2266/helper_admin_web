@@ -15,7 +15,8 @@ export class APIService {
         })
     };
 
-    constructor(protected http: HttpClient, protected cookieService: CookieService) {
+    constructor(protected http: HttpClient,
+        protected cookieService: CookieService) {
         const tokenExists: boolean = this.cookieService.check('X-Token');
         if (tokenExists) {
             const token: String = this.cookieService.get('X-Token');
@@ -27,6 +28,12 @@ export class APIService {
         return (error: any): Observable<T> => {
             console.error(error); // log to console instead
             console.log(`${operation} failed: ${error.message}`);
+            // If unauthorized remove all cookie
+            const errorDetails = error.error;
+            if (errorDetails && errorDetails.errorCode === 401) {
+                this.cookieService.deleteAll();
+                window.location.href = '/';
+            }
             // Let the app keep running by returning an empty result.
             return of(result as T);
         };

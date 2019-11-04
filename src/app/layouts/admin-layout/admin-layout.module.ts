@@ -16,6 +16,7 @@ import { AngularMaterialModule } from '../../angular-material.module';
 import { BookingsComponent } from 'app/bookings/bookings.component';
 import { ServiceCategoriesComponent } from 'app/service-categories/service-categories.component';
 import { ServiceCategoryDetailsComponent } from 'app/service-category-details/service-category-details.component';
+import { TransactionsComponent } from 'app/transactions/transactions.component';
 
 @NgModule({
     imports: [
@@ -38,6 +39,7 @@ import { ServiceCategoryDetailsComponent } from 'app/service-category-details/se
         BookingsComponent,
         ServiceCategoriesComponent,
         ServiceCategoryDetailsComponent,
+        TransactionsComponent,
     ]
 })
 
