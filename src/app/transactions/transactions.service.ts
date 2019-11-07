@@ -18,9 +18,17 @@ export class TransactionsService extends APIService {
 
     list(data): Observable<any> {
         return this.http.get(environment.apiUrl
-            + `/transactions/list?pageIndex=${data.pageIndex}&pageSize=${data.pageSize}`, this.httpOptions)
+            + `/transactions?pageIndex=${data.pageIndex}&pageSize=${data.pageSize}`, this.httpOptions)
             .pipe(
                 catchError(this.handleError<any>('load_transactions'))
+            );
+    }
+
+    pay(id) {
+        return this.http.put(environment.apiUrl
+            + `/transactions/pay?id=${id}`, this.httpOptions)
+            .pipe(
+                catchError(this.handleError<any>('paid_transactions'))
             );
     }
 }

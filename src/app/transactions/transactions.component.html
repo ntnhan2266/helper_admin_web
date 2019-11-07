@@ -12,28 +12,22 @@
                                 <table class="table">
                                     <thead class=" text-primary">
                                         <th>
-                                            Type
+                                            TID
                                         </th>
                                         <th>
-                                            Date
+                                            Service type
                                         </th>
                                         <th>
-                                            Time
-                                        </th>
-                                        <th>
-                                            Helper
+                                            Total
                                         </th>
                                         <th>
                                             Customer
                                         </th>
                                         <th>
-                                            Address
+                                            Time
                                         </th>
                                         <th>
-                                            Booking Status
-                                        </th>
-                                        <th>
-                                            Booking Time
+                                            Status
                                         </th>
                                         <th>
                                             Actions
@@ -58,12 +52,6 @@
                                             </td>
                                         <td>
                                             {{booking.address ? booking.address : '--'}}
-                                        </td>
-                                        <td>
-                                            {{getStatus(booking.status)}}
-                                        </td>
-                                        <td>
-                                            {{booking.createdAt | date: 'dd/MM/yyyy HH:mm'}}
                                         </td>
                                         <td>
                                             <button [matMenuTriggerFor]="menu" mat-button>
