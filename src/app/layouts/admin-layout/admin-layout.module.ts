@@ -17,6 +17,7 @@ import { BookingsComponent } from 'app/bookings/bookings.component';
 import { ServiceCategoriesComponent } from 'app/service-categories/service-categories.component';
 import { ServiceCategoryDetailsComponent } from 'app/service-category-details/service-category-details.component';
 import { TransactionsComponent } from 'app/transactions/transactions.component';
+import { ReviewsComponent } from 'app/reviews/reviews.component';
 
 @NgModule({
     imports: [
@@ -40,6 +41,7 @@ import { TransactionsComponent } from 'app/transactions/transactions.component';
         ServiceCategoriesComponent,
         ServiceCategoryDetailsComponent,
         TransactionsComponent,
+        ReviewsComponent,
     ]
 })
 
