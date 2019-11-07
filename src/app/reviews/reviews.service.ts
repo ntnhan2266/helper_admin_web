@@ -18,7 +18,7 @@ export class ReviewsService extends APIService {
 
     list(data): Observable<any> {
         return this.http.get(environment.apiUrl
-            + `/reviews?pageIndex=${data.pageIndex}&pageSize=${data.pageSize}`, this.httpOptions)
+            + `/reviews/list?pageIndex=${data.pageIndex}&pageSize=${data.pageSize}`, this.httpOptions)
             .pipe(
                 catchError(this.handleError<any>('load_reviews'))
             );

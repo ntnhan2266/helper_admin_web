@@ -18,6 +18,7 @@ import { ServiceCategoriesComponent } from 'app/service-categories/service-categ
 import { ServiceCategoryDetailsComponent } from 'app/service-category-details/service-category-details.component';
 import { TransactionsComponent } from 'app/transactions/transactions.component';
 import { ReviewsComponent } from 'app/reviews/reviews.component';
+import { RatingModule } from 'ng-starrating';
 
 @NgModule({
     imports: [
@@ -26,6 +27,7 @@ import { ReviewsComponent } from 'app/reviews/reviews.component';
         FormsModule,
         ReactiveFormsModule,
         AngularMaterialModule,
+        RatingModule,
     ],
     declarations: [
         DashboardComponent,

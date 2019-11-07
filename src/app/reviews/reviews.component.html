@@ -14,7 +14,7 @@
                                     <th>
                                         User
                                     </th>
-                                    <th>
+                                    <th [style.max-width.px]="'250'">
                                         Content
                                     </th>
                                     <th>
@@ -24,44 +24,28 @@
                                         Rating
                                     </th>
                                     <th>
-                                        Time
-                                    </th>
-                                    <th>
                                         Actions
                                     </th>
                                 </thead>
                                 <tbody>
-                                <tr *ngFor="let booking of bookings; let i = index;">
+                                <tr *ngFor="let review of reviews; let i = index;">
                                         <td>
-                                            {{getType(booking.type)}}
+                                            {{review.createdBy.name}}
                                         </td>
-                                        <td>
-                                            {{booking.startDate | date: 'dd/MM/yyyy'}} - {{ booking.endDate ? (booking.endDate | date: 'dd/MM/yyyy') : ''}}
-                                        </td>
-                                        <td>
-                                            {{booking.startTime | date: 'HH:mm'}} - {{ booking.endTime | date: 'HH:mm'}}
+                                        <td [style.max-width.px]="'250'">
+                                            {{review.content}}
                                         </td>
                                         <td>
-                                            {{booking.maid.user ? booking.maid.user.name : '--'}}
+                                            {{review.createdAt | date: 'dd/MM/yyyy HH:mm'}}
                                         </td>
-                                    <td>
-                                        {{booking.createdBy ? booking.createdBy.name : '--'}}
+                                        <td>
+                                            <star-rating [value]="review.rating" checkedcolor="orange" uncheckedcolor="white" size="24px" readonly="true"></star-rating>
                                         </td>
-                                    <td>
-                                        {{booking.address ? booking.address : '--'}}
-                                    </td>
-                                    <td>
-                                        <button [matMenuTriggerFor]="menu" mat-button>
-                                            <mat-icon>more_vert</mat-icon>
-                                        </button>
-                                        <mat-menu #menu="matMenu">
-                                            <!-- <button (click)="openDetailsDialog()" mat-menu-item>Show details</button> -->
-                                            <button *ngIf="booking.status != 4 && booking.status != 5 && booking.status != 3" 
-                                                (click)="cancelBooking(booking._id, i)" mat-menu-item>
-                                                Cancel
+                                        <td>
+                                            <button [matMenuTriggerFor]="menu" mat-button>
+                                                <mat-icon>delete</mat-icon>
                                             </button>
-                                        </mat-menu>
-                                    </td>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

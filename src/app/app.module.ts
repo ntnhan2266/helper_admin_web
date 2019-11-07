@@ -4,11 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-
-
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
-
 import { AppComponent } from './app.component';
 import { AgmCoreModule } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
@@ -17,6 +14,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
 import { BookingCancelDialogComponent } from './dialogs/booking-cancel-dialog/booking-cancel-dialog.component';
+import { RatingModule } from 'ng-starrating';
 
 @NgModule({
   imports: [
@@ -31,7 +29,8 @@ import { BookingCancelDialogComponent } from './dialogs/booking-cancel-dialog/bo
     AngularMaterialModule,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-    })
+    }),
+    RatingModule
   ],
   declarations: [
     AppComponent,
