@@ -23,4 +23,12 @@ export class ReviewsService extends APIService {
                 catchError(this.handleError<any>('load_reviews'))
             );
     }
+
+    delete(id: string): Observable<any> {
+        return this.http.delete(environment.apiUrl
+            + `/reviews/delete?id=${id}`, this.httpOptions)
+            .pipe(
+                catchError(this.handleError<any>('review_reviews'))
+            );
+    }
 }

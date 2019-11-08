@@ -42,7 +42,7 @@
                                             <star-rating [value]="review.rating" checkedcolor="orange" uncheckedcolor="white" size="24px" readonly="true"></star-rating>
                                         </td>
                                         <td>
-                                            <button [matMenuTriggerFor]="menu" mat-button>
+                                            <button mat-button (click)='onDeleteReview(review._id, i)'>
                                                 <mat-icon>delete</mat-icon>
                                             </button>
                                         </td>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ReviewsService } from './reviews.service';
 import { PageEvent } from '@angular/material/paginator';
 import { UtilsService } from 'app/helper/utils.service';
+import { ConfirmDialogModel, ConfirmDialogComponent } from '../dialogs/confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
     selector: 'app-reviews',
@@ -17,7 +19,8 @@ export class ReviewsComponent implements OnInit {
     query = '';
 
     constructor(private _reviewservice: ReviewsService,
-        private _utilService: UtilsService, ) {
+        private _utilService: UtilsService,
+        public dialog: MatDialog) {
     }
 
     ngOnInit() {
@@ -37,5 +40,33 @@ export class ReviewsComponent implements OnInit {
                 }
             });
         return event;
+    }
+
+    private deleteReview(id: string, index: number) {
+        this._reviewservice.delete(id).subscribe((result) => {
+            if (result.completed) {
+                this._utilService.showNotification(
+                    'top', 'right',
+                    'Deleted successfully',
+                    this._utilService.type.success);
+                this.reviews.splice(index, 1);
+            }
+        });
+    }
+
+    onDeleteReview(id: string, index: number) {
+        const message = `Are you sure you want to do this?`;
+        const dialogData = new ConfirmDialogModel('Confirm Action', message);
+        const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+            maxWidth: '500px',
+            data: dialogData
+        });
+
+        dialogRef.afterClosed().subscribe(dialogResult => {
+            const result = dialogResult;
+            if (result) {
+                this.deleteReview(id, index);
+            }
+        });
     }
 }

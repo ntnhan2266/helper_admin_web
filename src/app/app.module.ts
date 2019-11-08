@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
 import { BookingCancelDialogComponent } from './dialogs/booking-cancel-dialog/booking-cancel-dialog.component';
 import { RatingModule } from 'ng-starrating';
+import { ConfirmDialogComponent } from './dialogs/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   imports: [
@@ -37,11 +38,13 @@ import { RatingModule } from 'ng-starrating';
     AdminLayoutComponent,
     AuthLayoutComponent,
     BookingCancelDialogComponent,
+    ConfirmDialogComponent
   ],
   providers: [CookieService, AuthGuard],
   bootstrap: [AppComponent],
   entryComponents: [
     BookingCancelDialogComponent,
+    ConfirmDialogComponent
   ]
 })
 export class AppModule { }
