@@ -42,4 +42,11 @@ export class ServiceCategoriesService extends APIService {
             );
     }
 
+    delete(id: string): Observable<any> {
+        return this.http.delete(environment.apiUrl + `/category/delete?id=${id}`, this.httpOptions)
+            .pipe(
+                catchError(this.handleError<any>('delete_category_id_' + id))
+            );
+    }
+
 }

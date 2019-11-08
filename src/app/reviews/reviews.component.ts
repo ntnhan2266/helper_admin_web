@@ -20,7 +20,7 @@ export class ReviewsComponent implements OnInit {
 
     constructor(private _reviewservice: ReviewsService,
         private _utilService: UtilsService,
-        public dialog: MatDialog) {
+        private dialog: MatDialog) {
     }
 
     ngOnInit() {

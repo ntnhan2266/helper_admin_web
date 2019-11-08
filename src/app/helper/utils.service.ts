@@ -82,4 +82,73 @@ export class UtilsService {
                 return 'Other'
         }
     }
+
+    getLiteracy(literacyType: number): string {
+        switch (literacyType) {
+            case AppConstants.LITERACY.OTHER:
+                return 'Other';
+            case AppConstants.LITERACY.HIGH_SCHOOL:
+                return 'High school';
+            case AppConstants.LITERACY.UNIVERSITY:
+                return 'University';
+            case AppConstants.LITERACY.COLLEGE:
+                return 'College';
+            case AppConstants.LITERACY.POST_GRADUATE:
+                return 'Post graduate';
+            default:
+                return 'Other';
+        }
+    }
+
+    getSupportArea(areaCode: number): string {
+        switch (areaCode) {
+            case AppConstants.SUPPURT_AREA.DIS_1:
+                return 'District 1';
+            case AppConstants.SUPPURT_AREA.DIS_2:
+                return 'District 2';
+            case AppConstants.SUPPURT_AREA.DIS_3:
+                return 'District 3';
+            case AppConstants.SUPPURT_AREA.DIS_4:
+                return 'District 4';
+            case AppConstants.SUPPURT_AREA.DIS_5:
+                return 'District 5';
+            case AppConstants.SUPPURT_AREA.DIS_6:
+                return 'District 6';
+            case AppConstants.SUPPURT_AREA.DIS_7:
+                return 'District 7';
+            case AppConstants.SUPPURT_AREA.DIS_8:
+                return 'District 8';
+            case AppConstants.SUPPURT_AREA.DIS_9:
+                return 'District 9';
+            case AppConstants.SUPPURT_AREA.DIS_10:
+                return 'District 10';
+            case AppConstants.SUPPURT_AREA.DIS_11:
+                return 'District 11';
+            case AppConstants.SUPPURT_AREA.DIS_12:
+                return 'District 12';
+            case AppConstants.SUPPURT_AREA.DIS_BINH_THANH:
+                return 'District Binh Thanh';
+            case AppConstants.SUPPURT_AREA.DIS_GO_VAP:
+                return 'District Go Vap';
+            case AppConstants.SUPPURT_AREA.DIS_PHU_NHUAN:
+                return 'District Phu Nhuan';
+            case AppConstants.SUPPURT_AREA.DIS_TAN_BINH:
+                return 'District Tan Binh';
+            case AppConstants.SUPPURT_AREA.DIS_THU_DUC:
+                return 'District Thu Duc';
+            case AppConstants.SUPPURT_AREA.DIS_BINH_CHANH:
+                return 'District Binh Chanh';
+            case AppConstants.SUPPURT_AREA.DIS_CAN_GIO:
+                return 'District Can Gio';
+            case AppConstants.SUPPURT_AREA.DIS_CU_CHI:
+                return 'District Cu Chi';
+            case AppConstants.SUPPURT_AREA.DIS_HOOC_MON:
+                return 'District Hooc Mon';
+            case AppConstants.SUPPURT_AREA.DIS_NHA_BE:
+                return 'District Nha Be';
+            default:
+                return '--';
+        }
+    }
+
 }

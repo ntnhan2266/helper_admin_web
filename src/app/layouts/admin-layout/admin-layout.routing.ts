@@ -5,6 +5,7 @@ import { ServiceCategoriesComponent } from 'app/service-categories/service-categ
 import { ServiceCategoryDetailsComponent } from 'app/service-category-details/service-category-details.component';
 import { TransactionsComponent } from 'app/transactions/transactions.component';
 import { ReviewsComponent } from 'app/reviews/reviews.component';
+import { MaidsComponent } from 'app/maids/maids.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'users', component: UsersComponent },
@@ -14,4 +15,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'categories/detail', component: ServiceCategoryDetailsComponent },
     { path: 'transactions', component: TransactionsComponent },
     { path: 'reviews', component: ReviewsComponent },
+    { path: 'maids', component: MaidsComponent }
 ];

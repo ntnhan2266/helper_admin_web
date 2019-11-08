@@ -1,6 +1,6 @@
 {
-  "name": "material-dashboard-angular",
-  "version": "2.3.0",
+  "name": "smart-rabbit-admin",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",

@@ -19,6 +19,7 @@ import { ServiceCategoryDetailsComponent } from 'app/service-category-details/se
 import { TransactionsComponent } from 'app/transactions/transactions.component';
 import { ReviewsComponent } from 'app/reviews/reviews.component';
 import { RatingModule } from 'ng-starrating';
+import { MaidsComponent } from 'app/maids/maids.component';
 
 @NgModule({
     imports: [
@@ -44,6 +45,7 @@ import { RatingModule } from 'ng-starrating';
         ServiceCategoryDetailsComponent,
         TransactionsComponent,
         ReviewsComponent,
+        MaidsComponent,
     ]
 })
 

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 declare const $: any;
 
@@ -11,7 +13,7 @@ declare interface RouteInfo {
 
 export const ROUTES: RouteInfo[] = [
     { path: '/users', title: 'Users', icon: 'people', class: '' },
-    { path: '/helpers', title: 'Helpers', icon: 'face', class: '' },
+    { path: '/maids', title: 'Helpers', icon: 'face', class: '' },
     { path: '/bookings', title: 'Bookings', icon: 'list_alt', class: '' },
     { path: '/categories', title: 'Catergories', icon: 'category', class: '' },
     { path: '/transactions', title: 'Transactions', icon: 'attach_money', class: '' },
@@ -28,8 +30,9 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
     menuItems: any[];
 
-    constructor() {
-    }
+    constructor(private _cookieService: CookieService,
+        private _router: Router
+    ) { }
 
     ngOnInit() {
         this.menuItems = ROUTES.filter(menuItem => menuItem);
@@ -41,4 +44,9 @@ export class SidebarComponent implements OnInit {
         }
         return true;
     };
+
+    logout() {
+        this._cookieService.deleteAll();
+        this._router.navigate(['/']);
+    }
 }

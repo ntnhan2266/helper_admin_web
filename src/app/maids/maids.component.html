@@ -1,8 +1,7 @@
 <div class="main-content">
     <div class="container-fluid">
-        <!-- <form (ngSubmit)="getUser(null)">
+        <form (ngSubmit)="getData(null)">
             <div class="row">
-
                 <div class="col-md-3">
                     <mat-form-field class="example-full-width">
                         <input [(ngModel)]="query" matInput name="query" placeholder="Search by name/email" type="text">
@@ -12,83 +11,82 @@
                     <button class="btn btn-danger pull-right" mat-raised-button type="submit">Search</button>
                 </div>
             </div>
-        </form> -->
-        <div class="row">
-            <div class="col-md-3">
-                <button class="btn btn-danger" mat-raised-button routerLink='/categories/detail'>New category</button>
-            </div>
-        </div>
+        </form>
 
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-danger">
-                        <h4 class="card-title ">Service catergories</h4>
-                        <p class="card-category">List of catergories</p>
+                        <h4 class="card-title ">Maids</h4>
+                        <p class="card-category">Here is the info of all maids</p>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class=" text-primary">
                                     <th>
-                                        Icon
+                                        Name
                                     </th>
                                     <th>
-                                        Service Name (VI)
+                                        Literacy
                                     </th>
                                     <th>
-                                        Service Name (EN)
+                                        Salary(per hour)
                                     </th>
                                     <th>
-                                        Order
+                                        Jobs
                                     </th>
                                     <th>
-                                        Active
+                                        Areas
+                                    </th>
+                                    <th>
+                                        Exp
+                                    </th>
+                                    <th>
+                                        Intro
                                     </th>
                                     <th>
                                         Actions
                                     </th>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let category of categories; let i = index;">
+                                    <tr *ngFor="let maid of maids; let i = index;">
                                         <td>
-                                            <img class='category-icon' [src]="env.imageHost + category.icon">
+                                            {{maid.user ? maid.user.name : '--'}}
                                         </td>
                                         <td>
-                                            {{category.nameVi}}
+                                            {{getLiteracy(maid.literacyType)}}
                                         </td>
                                         <td>
-                                            {{category.nameEn}}
+                                            {{maid.salary | currency: 'VND'}}
                                         </td>
                                         <td>
-                                            {{category.order}}
+                                            {{getJobs(maid.jobTypes)}}
                                         </td>
                                         <td>
-                                            {{category.isActive ? 'Yes' : 'No'}}
+                                            {{getSupportArea(maid.supportAreas)}}
+                                        </td>
+                                        <td>
+                                            {{maid.exp}}
+                                        </td>
+                                        <td>
+                                            {{maid.intro}}
                                         </td>
                                         <td>
                                             <button [matMenuTriggerFor]="menu" mat-button>
                                                 <mat-icon>more_vert</mat-icon>
                                             </button>
                                             <mat-menu #menu="matMenu">
-                                                <button mat-menu-item (click)='goToDetail(category._id)'>
-                                                    Detail
-                                                </button>
-                                                <button mat-menu-item *ngIf='category.isActive' (click)='deactive(category._id, i)'>
-                                                    Deactive
-                                                </button>
-                                                <button mat-menu-item *ngIf='!category.isActive' (click)='active(category._id, i)'>
-                                                    Active
-                                                </button>
-                                                <button mat-menu-item (click)='onDelete(category._id, index)'>
-                                                    Delete
-                                                </button>
+                                                <button *ngIf="!maid.active" (click)="activemaid(maid._id, i)"
+                                                    mat-menu-item>Active</button>
+                                                <button *ngIf="maid.active" (click)="deactivemaid(maid._id, i)"
+                                                    mat-menu-item>Deactive</button>
                                             </mat-menu>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <mat-paginator (page)="pageEvent = getUser($event)" [length]="total" [pageSize]="pageSize">
+                            <mat-paginator (page)="pageEvent = getData($event)" [length]="total" [pageSize]="pageSize">
                             </mat-paginator>
                         </div>
                     </div>
