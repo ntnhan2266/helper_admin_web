@@ -18,9 +18,25 @@ export class MaidsService extends APIService {
 
     list(data): Observable<any> {
         return this.http.get(environment.apiUrl
-            + `/maids?pageIndex=${data.pageIndex}&pageSize=${data.pageSize}`, this.httpOptions)
+            + `/maids?pageIndex=${data.pageIndex}&pageSize=${data.pageSize}&query=${data.query}`, this.httpOptions)
             .pipe(
                 catchError(this.handleError<any>('load_maids'))
+            );
+    }
+
+    active(id: any): Observable<any> {
+        return this.http.put(environment.apiUrl
+            + `/maids/active`, { id }, this.httpOptions)
+            .pipe(
+                catchError(this.handleError<any>('active_helper_id_' + id))
+            );
+    }
+
+    deactive(id: any): Observable<any> {
+        return this.http.put(environment.apiUrl
+            + `/maids/deactive`, { id }, this.httpOptions)
+            .pipe(
+                catchError(this.handleError<any>('deactive_helper_id_' + id))
             );
     }
 

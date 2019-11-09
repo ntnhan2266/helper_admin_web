@@ -46,6 +46,9 @@
                                         Intro
                                     </th>
                                     <th>
+                                        Active
+                                    </th>
+                                    <th>
                                         Actions
                                     </th>
                                 </thead>
@@ -73,13 +76,16 @@
                                             {{maid.intro}}
                                         </td>
                                         <td>
+                                            {{maid.active ? 'True' : 'False'}}
+                                        </td>
+                                        <td>
                                             <button [matMenuTriggerFor]="menu" mat-button>
                                                 <mat-icon>more_vert</mat-icon>
                                             </button>
                                             <mat-menu #menu="matMenu">
-                                                <button *ngIf="!maid.active" (click)="activemaid(maid._id, i)"
+                                                <button *ngIf="!maid.active" (click)="activeMaid(maid._id, i)"
                                                     mat-menu-item>Active</button>
-                                                <button *ngIf="maid.active" (click)="deactivemaid(maid._id, i)"
+                                                <button *ngIf="maid.active" (click)="deactiveMaid(maid._id, i)"
                                                     mat-menu-item>Deactive</button>
                                             </mat-menu>
                                         </td>

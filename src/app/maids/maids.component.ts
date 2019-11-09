@@ -67,4 +67,22 @@ export class MaidsComponent implements OnInit {
         }
         return text;
     }
+
+    public activeMaid(id: string, index: number) {
+        this._maidservice.active(id).subscribe(result => {
+          if (!result.errorCode) {
+            this._maidservice[index].active = true;
+            this._utilService.showNotification('top', 'right', 'Active user successfully', this._utilService.type.success);
+          }
+        })
+      }
+    
+      public deactiveMaid(id: string, index: number) {
+        this._maidservice.deactive(id).subscribe(result => {
+          if (!result.errorCode) {
+            this.maids[index].active = false;
+            this._utilService.showNotification('top', 'right', 'Active user successfully', this._utilService.type.success);
+          }
+        })
+      }
 }
