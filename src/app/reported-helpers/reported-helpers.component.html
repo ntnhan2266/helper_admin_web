@@ -12,56 +12,40 @@
                 <table class="table">
                   <thead class=" text-primary">
                     <th>
-                      TID
+                      User
                     </th>
                     <th>
-                      Service type
+                      Reported by
                     </th>
                     <th>
-                      Total
+                      Reason
                     </th>
                     <th>
-                      Helper
-                    </th>
-                    <th>
-                      Customer
+                      Description
                     </th>
                     <th>
                       Time
-                    </th>
-                    <th>
-                      Status
                     </th>
                     <th>
                       Actions
                     </th>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let transaction of transactions; let i = index">
+                    <tr *ngFor="let report of reports; let i = index">
                       <td>
-                        {{ transaction._id }}
+                        {{ report.user.user.name }}
                       </td>
                       <td>
-                        {{
-                          transaction.category
-                            ? transaction.category.nameEn
-                            : "No data"
-                        }}
+                        {{report.reportedBy.name}}
                       </td>
                       <td>
-                        {{ transaction.amount | currency: "VND" }}
+                        {{getReason(report.reason)}}
                       </td>
                       <td>
-                          {{ transaction.maid ? transaction.maid.user.name : "--" }}
+                          {{ report.description }}
                       </td>
                       <td>
-                        {{ transaction.user ? transaction.user.name : "--" }}
-                      </td>
-                      <td>
-                        {{ transaction.createdAt | date: 'dd/MM/yyyy HH:mm'}}
-                      </td>
-                      <td>
-                        {{ transaction.status == 1 ? 'Unpaid' : 'Paid' }}
+                        {{ report.createdAt | date: 'dd/MM/yyyy HH:mm'}}
                       </td>
                       <td>
                         <button [matMenuTriggerFor]="menu" mat-button>
@@ -69,8 +53,8 @@
                         </button>
                         <mat-menu #menu="matMenu">
                           <button
-                            *ngIf="transaction.status == 1"
-                            (click)="markAsPaid(transaction._id, i)"
+                            *ngIf="report.status == 1"
+                            (click)="markAsPaid(report._id, i)"
                             mat-menu-item
                           >
                             Mark as paid

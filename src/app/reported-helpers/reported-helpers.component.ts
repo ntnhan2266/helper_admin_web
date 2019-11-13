@@ -32,10 +32,14 @@ export class ReportedHelpersComponent implements OnInit {
         })
             .subscribe((result) => {
                 if (!result.errorCode) {
-                    this.reports = result.transactions;
+                    this.reports = result.reports;
                     this.total = result.total;
                 }
             });
         return event;
+    }
+
+    public getReason(reason: number): string {
+        return this._utilService.getReportReason(reason);
     }
 }

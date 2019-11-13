@@ -151,4 +151,19 @@ export class UtilsService {
         }
     }
 
+    getReportReason(reason: number): string {
+        switch (reason) {
+            case AppConstants.REPORT_REASON.NOT_COMPLETED:
+                return 'Not complete';
+            case AppConstants.REPORT_REASON.ATTITUDE:
+                return 'Bad attitude';
+            case AppConstants.REPORT_REASON.INEFFICENT:
+                return 'Work ineffecient';
+            case AppConstants.REPORT_REASON.OTHER:
+                return 'Other';
+            default:
+                return 'Unknow';
+        }
+    }
+
 }

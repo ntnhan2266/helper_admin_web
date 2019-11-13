@@ -39,4 +39,11 @@ export class AppConstants {
         DIS_HOOC_MON: 21,
         DIS_NHA_BE: 22,
     };
+
+    public static REPORT_REASON = {
+        NOT_COMPLETED: 1,
+        INEFFICENT: 2,
+        ATTITUDE: 3,
+        OTHER: 4,
+    };
 }
