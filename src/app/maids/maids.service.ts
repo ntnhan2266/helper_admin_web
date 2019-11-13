@@ -18,7 +18,7 @@ export class MaidsService extends APIService {
 
     list(data): Observable<any> {
         return this.http.get(environment.apiUrl
-            + `/maids?pageIndex=${data.pageIndex}&pageSize=${data.pageSize}&query=${data.query}`, this.httpOptions)
+            + `/maid/list?pageIndex=${data.pageIndex}&pageSize=${data.pageSize}&query=${data.query}`, this.httpOptions)
             .pipe(
                 catchError(this.handleError<any>('load_maids'))
             );
