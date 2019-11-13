@@ -18,7 +18,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/categories', title: 'Catergories', icon: 'category', class: '' },
     { path: '/transactions', title: 'Transactions', icon: 'attach_money', class: '' },
     { path: '/reviews', title: 'Reviews', icon: 'rate_review', class: '' },
-    { path: '/reported-helpers', title: 'Reported helpers', icon: 'report', class: '' },
+    { path: '/reported-helpers', title: 'Reported Helpers', icon: 'report', class: '' },
     { path: '/settings', title: 'Setting', icon: 'settings_applications', class: '' },
 ];
 

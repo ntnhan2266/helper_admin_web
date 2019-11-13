@@ -38,4 +38,11 @@ export class TransactionsComponent implements OnInit {
             });
         return event;
     }
+
+    public markAsPaid(id: string, index: number) {
+        this._transactionservice.pay(id).subscribe(res => {
+            this.transactions[index].status = 2;
+            this._utilService.showNotification('top', 'right', 'Completed transaction', this._utilService.type.success);
+        });
+    }
 }

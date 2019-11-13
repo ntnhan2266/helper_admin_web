@@ -10,7 +10,7 @@ import { CookieService } from 'ngx-cookie-service';
     providedIn: 'root'
 })
 
-export class TransactionsService extends APIService {
+export class ReportedHelpersService extends APIService {
     constructor(public http: HttpClient, 
         public cookieService: CookieService) {
         super(http, cookieService);
@@ -18,17 +18,9 @@ export class TransactionsService extends APIService {
 
     list(data): Observable<any> {
         return this.http.get(environment.apiUrl
-            + `/transactions?pageIndex=${data.pageIndex}&pageSize=${data.pageSize}`, this.httpOptions)
+            + `/reports?pageIndex=${data.pageIndex}&pageSize=${data.pageSize}`, this.httpOptions)
             .pipe(
                 catchError(this.handleError<any>('load_transactions'))
-            );
-    }
-
-    pay(id) {
-        return this.http.put(environment.apiUrl
-            + `/transaction/pay?id=${id}`, {}, this.httpOptions)
-            .pipe(
-                catchError(this.handleError<any>('paid_transactions'))
             );
     }
 }

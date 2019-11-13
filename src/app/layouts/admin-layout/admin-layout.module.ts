@@ -20,6 +20,7 @@ import { TransactionsComponent } from 'app/transactions/transactions.component';
 import { ReviewsComponent } from 'app/reviews/reviews.component';
 import { RatingModule } from 'ng-starrating';
 import { MaidsComponent } from 'app/maids/maids.component';
+import { ReportedHelpersComponent } from 'app/reported-helpers/reported-helpers.component';
 
 @NgModule({
     imports: [
@@ -46,6 +47,7 @@ import { MaidsComponent } from 'app/maids/maids.component';
         TransactionsComponent,
         ReviewsComponent,
         MaidsComponent,
+        ReportedHelpersComponent,
     ]
 })
 
