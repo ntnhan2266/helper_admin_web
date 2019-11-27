@@ -16,6 +16,7 @@ import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
 import { BookingCancelDialogComponent } from './dialogs/booking-cancel-dialog/booking-cancel-dialog.component';
 import { RatingModule } from 'ng-starrating';
 import { ConfirmDialogComponent } from './dialogs/confirm-dialog/confirm-dialog.component';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { ConfirmDialogComponent } from './dialogs/confirm-dialog/confirm-dialog.
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     }),
-    RatingModule
+    RatingModule,
+    LoadingBarHttpClientModule
   ],
   declarations: [
     AppComponent,

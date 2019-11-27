@@ -1,107 +1,160 @@
 <div class="main-content">
-    <div class="container-fluid">
-        <!-- <form (ngSubmit)="getUser(null)">
-            <div class="row">
+  <div class="container-fluid">
+    <form (ngSubmit)="getUser(null)">
+      <div class="row">
+        <div class="col-md-3">
+          <mat-form-field>
+            <input
+              type="text"
+              matInput
+              placeholder="Name/email"
+              [ngModelOptions]="{ standalone: true }"
+              [(ngModel)]="userFilter"
+              [matAutocomplete]="auto"
+              (keyup)="onUserFilterChange($event)"
+            />
+          </mat-form-field>
 
-                <div class="col-md-3">
-                    <mat-form-field class="example-full-width">
-                        <input [(ngModel)]="query" matInput name="query" placeholder="Search by name/email" type="text">
-                    </mat-form-field>
-                </div>
-                <div class="col-md-1">
-                    <button class="btn btn-danger pull-right" mat-raised-button type="submit">Search</button>
-                </div>
-            </div>
-        </form> -->
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title ">Bookings</h4>
-                        <p class="card-category">List of bookings</p>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead class=" text-primary">
-                                    <th>
-                                        Type
-                                    </th>
-                                    <th>
-                                        Date
-                                    </th>
-                                    <th>
-                                        Time
-                                    </th>
-                                    <th>
-                                        Helper
-                                    </th>
-                                    <th>
-                                        Customer
-                                    </th>
-                                    <th>
-                                        Address
-                                    </th>
-                                    <th>
-                                        Booking Status
-                                    </th>
-                                    <th>
-                                        Booking Time
-                                    </th>
-                                    <th>
-                                        Actions
-                                    </th>
-                                </thead>
-                                <tbody>
-                                <tr *ngFor="let booking of bookings; let i = index;">
-                                        <td>
-                                            {{getType(booking.type)}}
-                                        </td>
-                                        <td>
-                                            {{booking.startDate | date: 'dd/MM/yyyy'}} - {{ booking.endDate ? (booking.endDate | date: 'dd/MM/yyyy') : ''}}
-                                        </td>
-                                        <td>
-                                            {{booking.startTime | date: 'HH:mm'}} - {{ booking.endTime | date: 'HH:mm'}}
-                                        </td>
-                                        <td>
-                                            {{booking.maid.user ? booking.maid.user.name : '--'}}
-                                        </td>
-                                    <td>
-                                        {{booking.createdBy ? booking.createdBy.name : '--'}}
-                                        </td>
-                                    <td>
-                                        {{booking.address ? booking.address : '--'}}
-                                    </td>
-                                    <td>
-                                        {{getStatus(booking.status)}}
-                                    </td>
-                                    <td>
-                                        {{booking.createdAt | date: 'dd/MM/yyyy HH:mm'}}
-                                    </td>
-                                    <td>
-                                        <button [matMenuTriggerFor]="menu" mat-button>
-                                            <mat-icon>more_vert</mat-icon>
-                                        </button>
-                                        <mat-menu #menu="matMenu">
-                                            <!-- <button (click)="openDetailsDialog()" mat-menu-item>Show details</button> -->
-                                            <button *ngIf="booking.status != 4 && booking.status != 5 && booking.status != 3" 
-                                                (click)="cancelBooking(booking._id, i)" mat-menu-item>
-                                                Cancel
-                                            </button>
-                                        </mat-menu>
-                                    </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <mat-paginator (page)="pageEvent = getUser($event)"
-                                           [length]="total"
-                                           [pageSize]="pageSize">
-                            </mat-paginator>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of options" [value]="option">
+              {{ option }}
+            </mat-option>
+          </mat-autocomplete>
         </div>
+        <div class="col-md-3">
+          <mat-form-field>
+            <mat-label>Filter by</mat-label>
+            <mat-select [(value)]="filterBy">
+              <mat-option value="helper">Helper</mat-option>
+              <mat-option value="user">Customer</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field>
+            <input
+              [value]="date"
+              (dateChange)="onDateChange($event)"
+              matInput
+              disabled
+              [matDatepicker]="picker"
+              placeholder="Choose a date"
+            />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker disabled="false"></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-danger" mat-raised-button type="submit">
+            Search
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title ">Bookings</h4>
+            <p class="card-category">List of bookings</p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary">
+                  <th>
+                    Type
+                  </th>
+                  <th>
+                    Date
+                  </th>
+                  <th>
+                    Time
+                  </th>
+                  <th>
+                    Helper
+                  </th>
+                  <th>
+                    Customer
+                  </th>
+                  <th>
+                    Address
+                  </th>
+                  <th>
+                    Booking Status
+                  </th>
+                  <th>
+                    Booking Time
+                  </th>
+                  <th>
+                    Actions
+                  </th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let booking of bookings; let i = index">
+                    <td>
+                      {{ getType(booking.type) }}
+                    </td>
+                    <td>
+                      {{ booking.startDate | date: "dd/MM/yyyy" }} -
+                      {{
+                        booking.endDate
+                          ? (booking.endDate | date: "dd/MM/yyyy")
+                          : ""
+                      }}
+                    </td>
+                    <td>
+                      {{ booking.startTime | date: "HH:mm" }} -
+                      {{ booking.endTime | date: "HH:mm" }}
+                    </td>
+                    <td>
+                      {{ booking.maid.user ? booking.maid.user.name : "--" }}
+                    </td>
+                    <td>
+                      {{ booking.createdBy ? booking.createdBy.name : "--" }}
+                    </td>
+                    <td>
+                      {{ booking.address ? booking.address : "--" }}
+                    </td>
+                    <td>
+                      {{ getStatus(booking.status) }}
+                    </td>
+                    <td>
+                      {{ booking.createdAt | date: "dd/MM/yyyy HH:mm" }}
+                    </td>
+                    <td>
+                      <button [matMenuTriggerFor]="menu" mat-button>
+                        <mat-icon>more_vert</mat-icon>
+                      </button>
+                      <mat-menu #menu="matMenu">
+                        <!-- <button (click)="openDetailsDialog()" mat-menu-item>Show details</button> -->
+                        <button
+                          *ngIf="
+                            booking.status != 4 &&
+                            booking.status != 5 &&
+                            booking.status != 3
+                          "
+                          (click)="cancelBooking(booking._id, i)"
+                          mat-menu-item
+                        >
+                          Cancel
+                        </button>
+                      </mat-menu>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <mat-paginator
+                (page)="pageEvent = getUser($event)"
+                [length]="total"
+                [pageSize]="pageSize"
+              >
+              </mat-paginator>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
