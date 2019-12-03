@@ -7,28 +7,30 @@ import { APIService } from '../helper/api.service';
 import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
-
 export class TransactionsService extends APIService {
-    constructor(public http: HttpClient, 
-        public cookieService: CookieService) {
-        super(http, cookieService);
-    }
+  constructor(public http: HttpClient, public cookieService: CookieService) {
+    super(http, cookieService);
+  }
 
-    list(data): Observable<any> {
-        return this.http.get(environment.apiUrl
-            + `/transactions?pageIndex=${data.pageIndex}&pageSize=${data.pageSize}`, this.httpOptions)
-            .pipe(
-                catchError(this.handleError<any>('load_transactions'))
-            );
-    }
+  list(data): Observable<any> {
+    return this.http
+      .get(
+        environment.apiUrl +
+          `/transactions?pageIndex=${data.pageIndex}&pageSize=${data.pageSize}&status=${data.status}&type=${data.type}&tid=${data.tid}`,
+        this.httpOptions
+      )
+      .pipe(catchError(this.handleError<any>('load_transactions')));
+  }
 
-    pay(id) {
-        return this.http.put(environment.apiUrl
-            + `/transaction/pay?id=${id}`, {}, this.httpOptions)
-            .pipe(
-                catchError(this.handleError<any>('paid_transactions'))
-            );
-    }
+  pay(id) {
+    return this.http
+      .put(
+        environment.apiUrl + `/transaction/pay?id=${id}`,
+        {},
+        this.httpOptions
+      )
+      .pipe(catchError(this.handleError<any>('paid_transactions')));
+  }
 }

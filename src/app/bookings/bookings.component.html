@@ -32,16 +32,15 @@
         </div>
         <div class="col-md-3">
           <mat-form-field>
-            <input
-              [value]="date"
-              (dateChange)="onDateChange($event)"
-              matInput
-              disabled
-              [matDatepicker]="picker"
-              placeholder="Choose a date"
-            />
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker disabled="false"></mat-datepicker>
+              <mat-label>Booking type</mat-label>
+              <mat-select [(value)]="type">
+                <mat-option value="">All</mat-option>
+                <mat-option value="1">Waiting for approving</mat-option>
+                <mat-option value="2">Approved</mat-option>
+                <mat-option value="3">Completed</mat-option>
+                <mat-option value="4">Canceled</mat-option>
+                <mat-option value="5">Rejected</mat-option>
+              </mat-select>
           </mat-form-field>
         </div>
         <div class="col-md-2">
