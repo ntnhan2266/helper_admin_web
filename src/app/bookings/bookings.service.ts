@@ -18,7 +18,8 @@ export class BookingsService extends APIService {
     return this.http
       .get(
         environment.apiUrl +
-          `/bookings/list?pageIndex=${data.pageIndex}&pageSize=${data.pageSize}&filterBy=${data.filterBy}&queryId=${data.queryId}&type=${data.type}`,
+          `/bookings/list?pageIndex=${data.pageIndex}&pageSize=${data.pageSize}
+          &filterBy=${data.filterBy}&queryId=${data.queryId}&type=${data.type}`,
         this.httpOptions
       )
       .pipe(catchError(this.handleError<any>('load_bookings')));

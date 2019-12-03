@@ -1,62 +1,113 @@
 <div class="main-content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title ">Reviews</h4>
-                        <p class="card-category">List of reviews</p>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead class=" text-primary">
-                                    <th>
-                                        User
-                                    </th>
-                                    <th [style.max-width.px]="'250'">
-                                        Content
-                                    </th>
-                                    <th>
-                                        Time
-                                    </th>
-                                    <th>
-                                        Rating
-                                    </th>
-                                    <th>
-                                        Actions
-                                    </th>
-                                </thead>
-                                <tbody>
-                                <tr *ngFor="let review of reviews; let i = index;">
-                                        <td>
-                                            {{review.createdBy.name}}
-                                        </td>
-                                        <td [style.max-width.px]="'250'">
-                                            {{review.content}}
-                                        </td>
-                                        <td>
-                                            {{review.createdAt | date: 'dd/MM/yyyy HH:mm'}}
-                                        </td>
-                                        <td>
-                                            <star-rating [value]="review.rating" checkedcolor="orange" uncheckedcolor="white" size="24px" readonly="true"></star-rating>
-                                        </td>
-                                        <td>
-                                            <button mat-button (click)='onDeleteReview(review._id, i)'>
-                                                <mat-icon>delete</mat-icon>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <mat-paginator (page)="pageEvent = getUser($event)"
-                                           [length]="total"
-                                           [pageSize]="pageSize">
-                            </mat-paginator>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="container-fluid">
+    <form (ngSubmit)="getData()">
+      <div class="row">
+        <div class="col-md-3">
+          <mat-form-field>
+            <input
+              type="text"
+              matInput
+              placeholder="Name/Email"
+              [ngModelOptions]="{ standalone: true }"
+              [(ngModel)]="query"
+            />
+          </mat-form-field>
         </div>
+        <div class="col-md-3">
+          <mat-form-field>
+              <mat-label>Filter by</mat-label>
+              <mat-select [(value)]="filterBy">
+                <mat-option value="">All</mat-option>
+                <mat-option value="user">User</mat-option>
+                <mat-option value="host">Host</mat-option>
+              </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-danger" mat-raised-button type="submit">
+            Search
+          </button>
+        </div>
+      </div>
+    </form>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title ">Reviews</h4>
+            <p class="card-category">List of reviews</p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary">
+                  <th>
+                    User
+                  </th>
+                  <th>
+                    Host
+                  </th>
+                  <th [style.max-width.px]="'250'">
+                    Content
+                  </th>
+                  <th>
+                    Time
+                  </th>
+                  <th>
+                    Rating
+                  </th>
+                  <th>
+                    Actions
+                  </th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let review of reviews; let i = index">
+                    <td>
+                      {{ review.createdBy ? review.createdBy.name : "--" }}
+                    </td>
+                    <td>
+                      {{
+                        review.maid && review.maid.user
+                          ? review.maid.user.name
+                          : "--"
+                      }}
+                    </td>
+                    <td [style.max-width.px]="'250'">
+                      {{ review.content }}
+                    </td>
+                    <td>
+                      {{ review.createdAt | date: "dd/MM/yyyy HH:mm" }}
+                    </td>
+                    <td>
+                      <star-rating
+                        [value]="review.rating"
+                        checkedcolor="orange"
+                        uncheckedcolor="white"
+                        size="24px"
+                        readonly="true"
+                      ></star-rating>
+                    </td>
+                    <td>
+                      <button
+                        mat-button
+                        (click)="onDeleteReview(review._id, i)"
+                      >
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <mat-paginator
+                (page)="pageEvent = getUser($event)"
+                [length]="total"
+                [pageSize]="pageSize"
+              >
+              </mat-paginator>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

@@ -1,44 +1,46 @@
 <div class="main-content">
   <div class="container-fluid">
-      <form (ngSubmit)="getData()">
-          <div class="row">
-            <div class="col-md-3">
-              <mat-form-field>
-                <input
-                  type="text"
-                  matInput
-                  placeholder="TID"
-                  [ngModelOptions]="{ standalone: true }"
-                  [(ngModel)]="tid"
-                />
-              </mat-form-field>
-            </div>
-            <div class="col-md-3">
-                <mat-form-field>
-                    <mat-label>Type</mat-label>
-                    <mat-select [(value)]="type">
-                      <mat-option value="">All</mat-option>
-                      <mat-option *ngFor="let cat of categories" [value]="cat._id" >{{cat.nameEn}}</mat-option>
-                    </mat-select>
-                </mat-form-field>
-              </div>
-            <div class="col-md-3">
-              <mat-form-field>
-                  <mat-label>Status</mat-label>
-                  <mat-select [(value)]="status">
-                    <mat-option value="">All</mat-option>
-                    <mat-option value="1">Waiting for payment</mat-option>
-                    <mat-option value="2">Paid</mat-option>
-                  </mat-select>
-              </mat-form-field>
-            </div>
-            <div class="col-md-2">
-              <button class="btn btn-danger" mat-raised-button type="submit">
-                Search
-              </button>
-            </div>
-          </div>
-        </form>
+    <form (ngSubmit)="getData()">
+      <div class="row">
+        <div class="col-md-3">
+          <mat-form-field>
+            <input
+              type="text"
+              matInput
+              placeholder="TID"
+              [ngModelOptions]="{ standalone: true }"
+              [(ngModel)]="tid"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field>
+            <mat-label>Type</mat-label>
+            <mat-select [(value)]="type">
+              <mat-option value="">All</mat-option>
+              <mat-option *ngFor="let cat of categories" [value]="cat._id">{{
+                cat.nameEn
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field>
+            <mat-label>Status</mat-label>
+            <mat-select [(value)]="status">
+              <mat-option value="">All</mat-option>
+              <mat-option value="1">Waiting for payment</mat-option>
+              <mat-option value="2">Paid</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-danger" mat-raised-button type="submit">
+            Search
+          </button>
+        </div>
+      </div>
+    </form>
 
     <div class="row">
       <div class="col-md-12">
@@ -92,16 +94,16 @@
                       {{ transaction.amount | currency: "VND" }}
                     </td>
                     <td>
-                        {{ transaction.maid ? transaction.maid.user.name : "--" }}
+                      {{ transaction.maid ? transaction.maid.user.name : "--" }}
                     </td>
                     <td>
                       {{ transaction.user ? transaction.user.name : "--" }}
                     </td>
                     <td>
-                      {{ transaction.createdAt | date: 'dd/MM/yyyy HH:mm'}}
+                      {{ transaction.createdAt | date: "dd/MM/yyyy HH:mm" }}
                     </td>
                     <td>
-                      {{ transaction.status == 1 ? 'Unpaid' : 'Paid' }}
+                      {{ transaction.status == 1 ? "Unpaid" : "Paid" }}
                     </td>
                     <td>
                       <button [matMenuTriggerFor]="menu" mat-button>
@@ -115,16 +117,10 @@
                         >
                           Mark as paid
                         </button>
-                        <button
-                          (click)="null"
-                          mat-menu-item
-                        >
+                        <button (click)="(null)" mat-menu-item>
                           Show helper info
                         </button>
-                        <button
-                          (click)="null"
-                          mat-menu-item
-                        >
+                        <button (click)="(null)" mat-menu-item>
                           Show customer info
                         </button>
                       </mat-menu>

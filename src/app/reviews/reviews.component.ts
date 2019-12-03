@@ -17,6 +17,7 @@ export class ReviewsComponent implements OnInit {
     pageSize = 10;
     pageEvent: PageEvent;
     query = '';
+    filterBy = '';
 
     constructor(private _reviewservice: ReviewsService,
         private _utilService: UtilsService,
@@ -32,6 +33,7 @@ export class ReviewsComponent implements OnInit {
             pageIndex: event ? event.pageIndex : 0,
             pageSize: this.pageSize,
             query: this.query,
+            filterBy: this.filterBy,
         })
             .subscribe((result) => {
                 if (!result.errorCode) {
