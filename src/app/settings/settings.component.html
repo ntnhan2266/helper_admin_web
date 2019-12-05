@@ -1,107 +1,27 @@
 <div class="main-content">
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-header card-header-danger">
-            <h4 class="card-title ">Transactions</h4>
-            <p class="card-category">List of transactions</p>
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title">Edit Profile</h4>
+                      <p class="card-category">Complete your profile</p>
+                  </div>
+                  <div class="card-body">
+                      <form>
+                          <div class="row">
+                              <div class="col-md-12">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Days to cancel booking" type="number">
+                                  </mat-form-field>
+                              </div>
+                          </div>
+                          <button mat-raised-button type="submit" class="btn btn-danger pull-right">Update Setting</button>
+                          <div class="clearfix"></div>
+                      </form>
+                  </div>
+              </div>
           </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table">
-                <thead class=" text-primary">
-                  <th>
-                    TID
-                  </th>
-                  <th>
-                    Service type
-                  </th>
-                  <th>
-                    Total
-                  </th>
-                  <th>
-                    Helper
-                  </th>
-                  <th>
-                    Customer
-                  </th>
-                  <th>
-                    Time
-                  </th>
-                  <th>
-                    Status
-                  </th>
-                  <th>
-                    Actions
-                  </th>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let transaction of transactions; let i = index">
-                    <td>
-                      {{ transaction._id }}
-                    </td>
-                    <td>
-                      {{
-                        transaction.category
-                          ? transaction.category.nameEn
-                          : "No data"
-                      }}
-                    </td>
-                    <td>
-                      {{ transaction.amount | currency: "VND" }}
-                    </td>
-                    <td>
-                        {{ transaction.maid ? transaction.maid.user.name : "--" }}
-                    </td>
-                    <td>
-                      {{ transaction.user ? transaction.user.name : "--" }}
-                    </td>
-                    <td>
-                      {{ transaction.createdAt | date: 'dd/MM/yyyy HH:mm'}}
-                    </td>
-                    <td>
-                      {{ transaction.status == 1 ? 'Unpaid' : 'Paid' }}
-                    </td>
-                    <td>
-                      <button [matMenuTriggerFor]="menu" mat-button>
-                        <mat-icon>more_vert</mat-icon>
-                      </button>
-                      <mat-menu #menu="matMenu">
-                        <button
-                          *ngIf="transaction.status == 1"
-                          (click)="markAsPaid(transaction._id, i)"
-                          mat-menu-item
-                        >
-                          Mark as paid
-                        </button>
-                        <button
-                          (click)="null"
-                          mat-menu-item
-                        >
-                          Show helper info
-                        </button>
-                        <button
-                          (click)="null"
-                          mat-menu-item
-                        >
-                          Show customer info
-                        </button>
-                      </mat-menu>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <mat-paginator
-                (page)="pageEvent = getUser($event)"
-                [length]="total"
-                [pageSize]="pageSize"
-              >
-              </mat-paginator>
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
   </div>
 </div>

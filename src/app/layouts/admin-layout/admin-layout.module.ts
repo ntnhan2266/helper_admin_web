@@ -21,6 +21,7 @@ import { ReviewsComponent } from 'app/reviews/reviews.component';
 import { RatingModule } from 'ng-starrating';
 import { MaidsComponent } from 'app/maids/maids.component';
 import { ReportedHelpersComponent } from 'app/reported-helpers/reported-helpers.component';
+import { SettingsComponent } from 'app/settings/settings.component';
 
 @NgModule({
     imports: [
@@ -48,6 +49,7 @@ import { ReportedHelpersComponent } from 'app/reported-helpers/reported-helpers.
         ReviewsComponent,
         MaidsComponent,
         ReportedHelpersComponent,
+        SettingsComponent,
     ]
 })
 

@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { TransactionsService } from './settings.service';
+import { SettingsService } from './settings.service';
 import { PageEvent } from '@angular/material/paginator';
 import { UtilsService } from 'app/helper/utils.service';
 
 @Component({
-    selector: 'app-transactions',
-    templateUrl: './transactions.component.html',
-    styleUrls: ['./transactions.component.scss']
+    selector: 'app-settings',
+    templateUrl: './settings.component.html',
+    styleUrls: ['./settings.component.scss']
 })
 
-export class TransactionsComponent implements OnInit {
-    transactions = [];
+export class SettingsComponent implements OnInit {
+    Settings = [];
     total = 0;
     pageSize = 10;
     pageEvent: PageEvent;
     query = '';
 
-    constructor(private _transactionservice: TransactionsService,
+    constructor(private _Settingservice: SettingsService,
         private _utilService: UtilsService, ) {
     }
 
@@ -25,14 +25,14 @@ export class TransactionsComponent implements OnInit {
     }
 
     public getData(event?: PageEvent) {
-        this._transactionservice.list({
+        this._Settingservice.list({
             pageIndex: event ? event.pageIndex : 0,
             pageSize: this.pageSize,
             query: this.query,
         })
             .subscribe((result) => {
                 if (!result.errorCode) {
-                    this.transactions = result.transactions;
+                    this.Settings = result.Settings;
                     this.total = result.total;
                 }
             });
@@ -40,8 +40,8 @@ export class TransactionsComponent implements OnInit {
     }
 
     public markAsPaid(id: string, index: number) {
-        this._transactionservice.pay(id).subscribe(res => {
-            this.transactions[index].status = 2;
+        this._Settingservice.pay(id).subscribe(res => {
+            this.Settings[index].status = 2;
             this._utilService.showNotification('top', 'right', 'Completed transaction', this._utilService.type.success);
         });
     }
