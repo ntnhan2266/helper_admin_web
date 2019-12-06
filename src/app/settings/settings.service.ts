@@ -7,28 +7,22 @@ import { APIService } from '../helper/api.service';
 import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
-
 export class SettingsService extends APIService {
-    constructor(public http: HttpClient, 
-        public cookieService: CookieService) {
-        super(http, cookieService);
-    }
+  constructor(public http: HttpClient, public cookieService: CookieService) {
+    super(http, cookieService);
+  }
 
-    list(data): Observable<any> {
-        return this.http.get(environment.apiUrl
-            + `/Settings?pageIndex=${data.pageIndex}&pageSize=${data.pageSize}`, this.httpOptions)
-            .pipe(
-                catchError(this.handleError<any>('load_settings'))
-            );
-    }
+  get(): Observable<any> {
+    return this.http
+      .get(environment.apiUrl + `/settings`, this.httpOptions)
+      .pipe(catchError(this.handleError<any>('load_settings')));
+  }
 
-    pay(id) {
-        return this.http.put(environment.apiUrl
-            + `/transaction/pay?id=${id}`, {}, this.httpOptions)
-            .pipe(
-                catchError(this.handleError<any>('paid_settings'))
-            );
-    }
+  update(data) {
+    return this.http
+      .put(environment.apiUrl + `/setting/day-to-review`, data, this.httpOptions)
+      .pipe(catchError(this.handleError<any>('updated_settings')));
+  }
 }
