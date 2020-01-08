@@ -18,6 +18,9 @@
                       Reported by
                     </th>
                     <th>
+                      Booking ID
+                    </th>
+                    <th>
                       Reason
                     </th>
                     <th>
@@ -39,10 +42,13 @@
                         {{report.reportedBy.name}}
                       </td>
                       <td>
+                        {{report.bookingId}}
+                      </td>
+                      <td>
                         {{getReason(report.reason)}}
                       </td>
                       <td>
-                          {{ report.description }}
+                          {{ report.description ? report.description : '--' }}
                       </td>
                       <td>
                         {{ report.createdAt | date: 'dd/MM/yyyy HH:mm'}}
