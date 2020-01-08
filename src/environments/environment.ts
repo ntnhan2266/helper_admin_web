@@ -5,7 +5,7 @@
 
 export const environment = {
     production: false,
-    apiUrl: 'http://ec2-18-140-5-166.ap-southeast-1.compute.amazonaws.com//api',
+    apiUrl: 'http://ec2-18-140-5-166.ap-southeast-1.compute.amazonaws.com/api',
     imageHost: 'http://ec2-18-140-5-166.ap-southeast-1.compute.amazonaws.com/',
     // apiUrl: 'http://localhost:4000/api',
     // imageHost: 'http://localhost:4000',

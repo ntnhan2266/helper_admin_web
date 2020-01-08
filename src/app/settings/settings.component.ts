@@ -1,48 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 import { SettingsService } from './settings.service';
-import { PageEvent } from '@angular/material/paginator';
 import { UtilsService } from 'app/helper/utils.service';
 
+export class Setting {
+    daysToReview: number;
+
+    constructor() {
+        this.daysToReview = 0;
+    }
+}
+
 @Component({
-    selector: 'app-settings',
-    templateUrl: './settings.component.html',
-    styleUrls: ['./settings.component.scss']
+  selector: 'app-settings',
+  templateUrl: './settings.component.html',
+  styleUrls: ['./settings.component.scss']
 })
-
 export class SettingsComponent implements OnInit {
-    Settings = [];
-    total = 0;
-    pageSize = 10;
-    pageEvent: PageEvent;
-    query = '';
+  setting = new Setting();
 
-    constructor(private _Settingservice: SettingsService,
-        private _utilService: UtilsService, ) {
-    }
+  constructor(
+    private _settingService: SettingsService,
+    private _utilService: UtilsService
+  ) {}
 
-    ngOnInit() {
-        this.getData(null);
-    }
+  ngOnInit() {
+    this.getData();
+  }
 
-    public getData(event?: PageEvent) {
-        this._Settingservice.list({
-            pageIndex: event ? event.pageIndex : 0,
-            pageSize: this.pageSize,
-            query: this.query,
-        })
-            .subscribe((result) => {
-                if (!result.errorCode) {
-                    this.Settings = result.Settings;
-                    this.total = result.total;
-                }
-            });
-        return event;
-    }
+  public getData() {
+    this._settingService.get().subscribe(result => {
+      if (!result.errorCode) {
+        this.setting = result.setting;
+      }
+    });
+  }
 
-    public markAsPaid(id: string, index: number) {
-        this._Settingservice.pay(id).subscribe(res => {
-            this.Settings[index].status = 2;
-            this._utilService.showNotification('top', 'right', 'Completed transaction', this._utilService.type.success);
-        });
-    }
+  public updateSetting() {
+      this._settingService.update(this.setting).subscribe(result => {
+        if (!result.errorCode) {
+            this._utilService.showNotification('top', 'right', 'Update settings successfully', this._utilService.type.success);
+          }
+      });
+  }
 }

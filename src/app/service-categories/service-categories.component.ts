@@ -76,11 +76,11 @@ export class ServiceCategoriesComponent implements OnInit {
     private deleteCategory(id: string, index: number) {
         this._servicecategoryService.delete(id).subscribe((result) => {
             if (result.completed) {
+                this.categories.splice(index, 1);
                 this._utilService.showNotification(
                     'top', 'right',
                     'Deleted successfully',
                     this._utilService.type.success);
-                this.categories.splice(index, 1);
             }
         });
     }
